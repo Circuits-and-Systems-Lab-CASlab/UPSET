@@ -1,0 +1,85 @@
+site_name: UPSET Documentation
+use_directory_urls: false
+repo_url: https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET
+repo_name: Circuits-and-Systems-Lab-CASlab/UPSET
+copyright: Copyright &copy; 2025 Circuits and Systems Laboratory, University of Thessaly, Greece
+nav:
+  - Home: index.md
+  - Tool Fundamentals: tool_fundamentals.md
+  - Design Configuration: design_configuration.md
+  - SET Analysis Flow: set_analysis_flow.md
+  - SET Sensitivity Metrics: set_sensitivity_metrics.md
+  # - SET Optimisation Techniques: set_optimisation_techniques.md
+  - Top-Level Flows: top_level_flows.md
+  - Appendices: appendix.md
+  - Tutorial Flows: tutorial_flows.md
+  - Commands Reference: commands_reference.md
+  - Reference Card: reference_card.md
+theme:
+  name: material
+  logo: assets/UPSET_logo.ico
+  favicon: assets/UPSET_logo.ico
+  font:
+    code: Red Hat Mono
+  
+  features:
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    # - navigation.sections
+    - navigation.path
+    # - navigation.expand
+    - navigation.top
+    - navigation.footer
+    # - toc.integrate
+
+  palette: 
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode  
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/circuits-and-systems-laboratory-uth
+    - icon: fontawesome/solid/paper-plane
+      # link: mailto:
+  generator: false
+  version:
+    provider: mike
+
+extra_css:
+  - css/custom.css
+  # - css/pdf-admonition-fix.css
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - offline
+  - search
+  # - with-pdf
+  - tags
