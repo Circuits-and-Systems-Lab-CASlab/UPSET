@@ -4,6 +4,26 @@ UPSET is a Single Event Transient (SET) Analysis tool supporting both SET Genera
 ## How to Start
 All the necessary files are packaged in a tarball. The user only needs to download and extract its contents to a preferred location, then run the setup script. For more information regarding the use of UPSET, please refer to the [documentation](https://circuits-and-systems-lab-caslab.github.io/UPSET/).
 
+## Running UPSET with Docker
+
+After saving the `INSTALL` directory inside the `data` directory of the `Docker_file`, follow these steps:
+
+```bash
+cd create_docker
+make build-docker
+make run
+
+/* In Docker Environment */
+cd data/INSTALL
+./UPSET
+
+/* Save/Load Docker Image */
+cd create_docker
+make save
+cd use_docker
+make load
+```
+
 ## License
 UPSET is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
 
