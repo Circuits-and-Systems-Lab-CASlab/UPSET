@@ -1,23 +1,28 @@
-FROM centos:centos7
+FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
+ARG APT_COMMAND="apt-get -o Acquire::Retries=3 -y"
+ARG python_version="python3"
+ARG tf_agents_version="tf-agents[reverb]"
 
-COPY CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo
+ARG APT_COMMAND="apt-get -o Acquire::Retries=3 -y"
 
-RUN yum -y update && yum -y clean all && yum -y install gtk2+-devel gtk2-devel && yum -y install tcl &&\
-    yum -y install gsl && yum -y install suitesparse && yum -y install less &\
-    yum -y install xeyes && yum -y groupinstall "Development Tools"
+# Basic Dev && ASP Depedencies
+RUN ${APT_COMMAND} update && ${APT_COMMAND} install build-essential &&\
+    ${APT_COMMAND} install gtk2.0 && ${APT_COMMAND} install libgtk2.0-dev &&\
+    ${APT_COMMAND} install tcl8.6 && ${APT_COMMAND} install libgsl-dev &&\
+    ${APT_COMMAND} install libsuitesparse-dev && ${APT_COMMAND} install libfftw3-dev &&\
+    ${APT_COMMAND} install libreadline-dev 
+ 
 
-RUN yum -y install gsl*
-RUN yum -y install suitesparse*
-RUN yum -y install fftw fftw-devel
-RUN yum -y install libuuid libuuid-devel
-RUN yum -y install readline-devel
-RUN yum -y install tcl*
-RUN yum -y install gtk2*
-RUN yum -y install okular
-RUN yum -y install nano
-RUN yum -y install graphviz
+RUN ${APT_COMMAND} install flex && ${APT_COMMAND} install bison
 
-WORKDIR /home/ 
+RUN ${APT_COMMAND} install tcl8.6-dev
+
+
+RUN ${APT_COMMAND} install software-properties-common wget checkinstall && \
+    ${APT_COMMAND} install libreadline-gplv2-dev libncursesw5-dev libssl-dev \
+    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev 
+
+WORKDIR /
 COPY run_docker.sh /
 CMD ["/run_docker.sh"]
