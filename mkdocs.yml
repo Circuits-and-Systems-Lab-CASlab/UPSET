@@ -5,11 +5,12 @@ repo_name: Circuits-and-Systems-Lab-CASlab/UPSET
 copyright: Copyright &copy; 2025 Circuits and Systems Laboratory, University of Thessaly, Greece
 nav:
   - Home: index.md
+  - Docker Setup: docker_setup.md
   - Tool Fundamentals: tool_fundamentals.md
   - Design Configuration: design_configuration.md
   - SET Analysis Flow: set_analysis_flow.md
   - SET Sensitivity Metrics: set_sensitivity_metrics.md
-  # - SET Optimisation Techniques: set_optimisation_techniques.md
+  - SET Mitigation Techniques: set_optimisation_techniques.md
   - Top-Level Flows: top_level_flows.md
   - Appendices: appendix.md
   - Tutorial Flows: tutorial_flows.md

@@ -78,6 +78,13 @@
 <td style="font-family: 'Courier New';" markdown> [report_timing](commands_reference.md#report_timing)</td>
 <td>Perform STA</td>
 </tr>
+<tr style="background-color: rgb(209 211 212);">
+<td style="text-align: center;" colspan="2"><b>Components Legalisation</b></td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [legalise_components](commands_reference.md#legalise_components)</td>
+<td>Legalise the components of the circuit removing overlaps and aligning components to power rails</td>
+</tr>
 </tr>
 <tr style="background-color: rgb(209 211 212);">
 <td style="text-align: center;" colspan="2"><b>Simulation</b></td>
@@ -241,6 +248,41 @@
 <tr markdown>
 <td style="font-family: 'Courier New';" markdown> [report_SET_generation_probabilities](commands_reference.md#report_SET_generation_probabilities)</td>
 <td>Report SET generation probabilities for all gatepins</td>
+</tr>
+<tr style="background-color: rgb(209 211 212);">
+<td style="text-align: center;" colspan="2"><b>ECO SET Mitigation Techniques</b></td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_swap_component_pins](commands_reference.md#eco_swap_component_pins)</td>
+<td>Rewire two input pins of a component</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_upsize_component](commands_reference.md#eco_upsize_component)</td>
+<td>Upsize a component to the immediate larger component</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_downsize_component](commands_reference.md#eco_downsize_component)</td>
+<td>Downsize a component to the immediate smaller component</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_charge_sharing](commands_reference.md#eco_charge_sharing)</td>
+<td>Insert charge-sharing logic to a target gatepin</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_fanout_decomposition](commands_reference.md#eco_fanout_decomposition)</td>
+<td>Perform fan-out decomposition in a target component</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_tmr_component](commands_reference.md#eco_tmr_component)</td>
+<td>Apply Triple Modular Redundancy (TMR) to a target component</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_insert_filter](commands_reference.md#eco_insert_filter)</td>
+<td>Insert a SET filter to a target gatepin</td>
+</tr>
+<tr markdown>
+<td style="font-family: 'Courier New';" markdown> [eco_insert_cascaded_inverter](commands_reference.md#eco_insert_cascaded_inverter)</td>
+<td>Insert a pair of cascaded inverters to a target gatepin</td>
 </tr>
 </tbody>
 </table>

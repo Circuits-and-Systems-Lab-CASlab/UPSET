@@ -685,7 +685,7 @@ Heuristic SET analysis flow. Run the SET analysis for a set of particle profiles
 !!! example
 
     ```tcl
-    %> perform_SET_analysis -profiles {p1 p2 p3}-gatepins {SET_testcase/U1/Q SET_testcase/U2/Q SET_testcase/U3/Q SET_testcase/U4/Q}
+    %> perform_SET_analysis -profiles {p1 p2 p3} -gatepins {SET_testcase/U1/Q SET_testcase/U2/Q SET_testcase/U3/Q SET_testcase/U4/Q}
     ```
 
 ## list_gatepins_set_analysis_info
@@ -728,3 +728,178 @@ Report positive and negative SET generations probabilities for all gatepins.
 ```tcl
 %> report_SET_generation_probabilities
 ```
+
+## eco_swap_component_pins
+
+Rewire two input pins of a component.
+
+**Syntax:**
+
+```tcl
+%> eco_swap_component_pins <component_name> <pin_name_1> <pin_name_2>
+```
+
+**Arguments:**
+
+- `<component_name>` is the name of the target component to perform rewiring
+- `<pin_name_1>` is the name of the first pin to be rewired
+- `<pin_name_2>` is the name of the second pin to be rewired
+
+## eco_upsize_component
+
+Upsize a component to the immediate larger component.
+
+**Syntax:**
+
+```tcl
+%> eco_upsize_component <component_name> ?-overlapsmethod <1 | 2 | 3>?
+```
+
+**Arguments:**
+
+- `<component_name>` is the name of the target component to upsize
+- `-overlapsmethod` is the overlap handling method (optional)
+    - `1`: remove from rows and mark as illegal only the overlapping components (default)
+    - `2`: remove from rows and mark as illegal both the resized and the overlapping components
+    - `3`: remove from rows and mark as illegal only the resized component
+
+## eco_downsize_component
+
+Downsize a component to the immediate smaller component.
+
+**Syntax:**
+
+```tcl
+%> eco_downsize_component <component_name> ?-overlapsmethod <1 | 2 | 3>?
+```
+
+**Arguments:**
+
+- `<component_name>` is the name of the target component to downsize
+- `-overlapsmethod` is the overlap handling method (optional)
+    - `1`: remove from rows and mark as illegal only the overlapping components (default)
+    - `2`: remove from rows and mark as illegal both the resized and the overlapping components
+    - `3`: remove from rows and mark as illegal only the resized component
+
+## eco_charge_sharing
+
+Insert charge-sharing logic to a target gatepin.
+
+**Syntax:**
+
+```tcl
+%> eco_charge_sharing <target_gatepin> -cell <delay_cell> -num <number_of_delay_cells> ?-placementmethod <0 (Default Placement) | 1 (Place in the centre-of-mass) | 2 (Place in the centre-of-mass and remove overlapping components)>?
+```
+
+**Arguments:**
+
+- `<target_gatepin>` is the name of the target gatepin to insert charge-sharing logic
+- `-cell` is the name of the delay cell to be used for the charge-sharing logic
+- `-num` is the number of delay cells to be used for the charge-sharing logic
+- `-placementmethod` is the placement method (optional)
+    - `0`: place the new components at (0, 0) (default)
+    - `1`: place the new components at the centre of mass
+    - `2`: place the new components at the centre of mass and remove overlapping components
+
+## eco_fanout_decomposition
+
+Perform fan-out decomposition in a target component by performing gate cloning on the target component and splitting the fan-out of the target gatepin.
+
+**Syntax:**
+
+```tcl
+%> eco_fanout_decomposition <target_component> ?-placementmethod <0 (Default Placement) | 1 (Place in the centre-of-mass) | 2 (Place in the centre-of-mass and remove overlapping components)>?
+```
+
+**Arguments:**
+
+- `<target_component>` is the name of the target component to perform fan-out decomposition
+- `-placementmethod` is the placement method (optional)
+    - `0`: place the new components at (0, 0) (default)
+    - `1`: place the new components at the centre of mass
+    - `2`: place the new components at the centre of mass and remove overlapping components
+
+## eco_tmr_component
+
+Apply Triple Modular Redundancy (TMR) to a target component. The target component is triplicated with the input of each replica being tied together and their outputs connected to a majority voter. As for the majority voter, UPSET uses the NAND based majority voter, which is shown in the [figure](set_optimisation_techniques.md#fig:majority_voter).
+
+**Syntax:**
+
+```tcl
+%> eco_tmr_component <component_name> ?-placementmethod <0 (Default Placement) | 1 (Place in the centre-of-mass) | 2 (Place in the centre-of-mass and remove overlapping components)>?
+```
+
+**Arguments:**
+
+- `<component_name>` is the name of the target component to apply TMR
+- `-placementmethod` is the placement method (optional)
+    - `0`: place the new components at (0, 0) (default)
+    - `1`: place the new components at the centre of mass
+    - `2`: place the new components at the centre of mass and remove overlapping components
+
+## eco_insert_filter
+
+Insert a SET filter to a target gatepin. The SET filter is composed by a guard gate and a delay line.
+
+!!! bug
+    The current version of SET filter insertion is supporting the insertion of an AND gate for the voting, instead of a guard gate. However, this is not correct, since the AND gate will result in broadening negative (1->0->1) SET pulses instead of attenuating them. Thus, the SET filter insertion should be updated to support the insertion of a guard gate in the next release.
+
+**Syntax:**
+
+```tcl
+%> eco_insert_filter <target_gatepin> -cell <delay_cell> -num <number_of_delay_cells> -AND <AND_cell> ?-placementmethod <0 (Default Placement) | 1 (Place in the centre-of-mass) | 2 (Place in the centre-of-mass and remove overlapping components)>?
+```
+
+**Arguments:**
+
+- `<target_gatepin>` is the name of the target gatepin to insert a SET filter
+- `-cell` is the name of the delay cell to be used for the SET filter
+- `-num` is the number of delay cells to be used for the SET filter
+- `-AND` is the name of the AND cell to be used for the SET filter
+- `-placementmethod` is the placement method (optional)
+    - `0`: place the new components at (0, 0) (default)
+    - `1`: place the new components at the centre of mass
+    - `2`: place the new components at the centre of mass and remove overlapping components
+
+## eco_insert_cascaded_inverter
+
+Insert a pair of cascaded inverters to a target gatepin.
+
+**Syntax:**
+
+```tcl
+%> eco_insert_cascaded_inverter <target_gatepin> -cells <cell 1> <cell 2> ?-placementmethod <0 (Default Placement) | 1 (Place in the centre-of-mass) | 2 (Place in the centre-of-mass and remove overlapping components)>?
+```
+
+**Arguments:**
+
+- `<target_gatepin>` is the name of the target gatepin to insert a cascaded inverter
+- `-cells` is the name of the INV cells to be used for the cascaded inverters
+- `-placementmethod` is the placement method (optional)
+    - `0`: place the new components at (0, 0) (default)
+    - `1`: place the new components at the centre of mass
+    - `2`: place the new components at the centre of mass and remove overlapping components
+
+
+## legalise_components
+
+Perform legalisation of the circuit components.
+
+**Syntax:**
+
+```tcl
+%> legalise_components -order <0 (all) | 1 (increasing) | 2 (decreasing) | 3 (centre-outwards)> -blockagesmethod <0 (Subrow Assignment - SRA) | 1 (Subrow Reassignment - SRR)> ?-timingdriven <longest | shortest>? ?-htmlreport <filename>?
+```
+
+**Arguments:**
+
+- `-order` is the order of the legalisation
+    - `0`: all of the 3 supported orders and choose the best one
+    - `1`: increasing order of components x-coordinates
+    - `2`: decreasing order of components x-coordinates
+    - `3`: centre-outwards order of components x-coordinates
+- `-blockagemethod` is the blockage method
+    - `0`: Subrow Assignment - SRA
+    - `1`: Subrow Reassignment - SRR
+- `-timingdriven` is the timing driven analysis (optional)
+- `-htmlreport` is the name of the HTML report file to be generated (optional)

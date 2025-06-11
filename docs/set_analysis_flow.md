@@ -154,7 +154,7 @@ UPSET supports two SET Analysis modes : (i) Vector-based, and (ii) Probabilistic
 
 === "Static Probabilities Annotation"
 
-    Alternatively to creating a case analysis for each SET scenario, the current state of the circuit be be defined by the static probabilities for each circuit pin. A static probability for a pin `i` ($P_i$) is the probability of the pin being at the logic-1 state. The static probabilities for circuit pins can be annotated either by loading a SAIF file (as shown in section [Import SAIF](#import-saif) section) or by using the TCL command:
+    Alternatively to creating a case analysis for each SET scenario, the current state of the circuit be be defined by the static probabilities for each circuit pin. A static probability for a pin `i` ($P_i$) is the probability of the pin being at the logic-1 state. The static probabilities for circuit pins can be annotated either by loading a SAIF file (as shown in section [Import SAIF](design_configuration.md#import-saif) section) or by using the TCL command:
 
     ```tcl
     %> set_static_probability -value <probability_value> (-gatepin <gatepin_name> | -all | -startpoints)
@@ -267,7 +267,7 @@ After the SET glitch generation at the output gatepin of the driver gate, the SE
 Propagation of the generated SETs to the forward logic cone
 ///
 
-After SET scenarios have been loaded in memory (check [create_SET_scenario](commands_reference.md#create-set-scenario) and [load_SET_scenarios](commands_reference.md#load-set-scenarios) commands), and SET glitch generation has been performed for a specific scenario or for all of them (check [generate_SET_glitch](commands_reference.md#generate-set-glitch) command), then SET propagation can be performed for the scenario that SET generation has been performed or for all of them, using the TCL command:
+After SET scenarios have been loaded in memory (check [create_SET_scenario](commands_reference.md#create_set_scenario) and [load_SET_scenarios](commands_reference.md#load_set_scenarios) commands), and SET glitch generation has been performed for a specific scenario or for all of them (check [generate_SET_glitch](commands_reference.md#generate_set_glitch) command), then SET propagation can be performed for the scenario that SET generation has been performed or for all of them, using the TCL command:
 
 ```tcl
 %> propagate_SET_scenario_glitch (-scenario <scenario_index> | -all) ?-corner <corner_index>?
@@ -536,7 +536,7 @@ In case the SET pulse width is positive ([left](#fig:non_electrically_masked) fi
 
 Nonetheless, logical and electrical masking may not be able to filter the SET pulse, and the latter may be able to reach a sequential element. Timing-window masking occurs when a SET pulse reaches the input of a sequential element but outside the [`SETUP`, `HOLD`] window during which the sequential element captures the input data, and thus this SET is ignored.
 
-Timing-Window masking occurs due to the temporal randomness of the particle strike time and the realisation that the pulse arrival time at the latch has to be within the latching window for the error to occur. In section [Probabilistic Timing-Window Masking](#probabilistic_timing_window_masking) more details on the supported model of the timing-window masking are provided.
+Timing-Window masking occurs due to the temporal randomness of the particle strike time and the realisation that the pulse arrival time at the latch has to be within the latching window for the error to occur. In section [Probabilistic Timing-Window Masking](#probabilistic-timing-window-masking) more details on the supported model of the timing-window masking are provided.
 
 ## SET Probabilities Computation
 
@@ -606,7 +606,7 @@ Finally, at the output of the XOR gate, two SET pulses will be produced:
 
 #### SET Probability Computation in Detailed TimeStamp-based STA-mode
 
-In contrast to "Vanilla" STA-mode, where MAX analysis is performed for the computation of the output SET probability, in the Detailed TimeStamp-based mode the output SET pulse probability depends on the output pulse case (presented in this [table](#tab:detailed_time_stamp_based_sta_mode_input_output_combinations)) based on which the output SET is constructed. Table \ref{tab:detailed_set_prob_computation} presents the equations for the computation of the output SET pulse probability for each output pulse case.
+In contrast to "Vanilla" STA-mode, where MAX analysis is performed for the computation of the output SET probability, in the Detailed TimeStamp-based mode the output SET pulse probability depends on the output pulse case (presented in this [table](#tab:detailed_time_stamp_based_sta_mode_input_output_combinations)) based on which the output SET is constructed. The following [table](#tab:detailed_set_prob_computation) presents the equations for the computation of the output SET pulse probability for each output pulse case.
 
 <table markdown id="tab:detailed_set_prob_computation">
 <caption><strong>Detailed TimeStamp-based STA-mode Output SET Probability Computation</strong></caption>
