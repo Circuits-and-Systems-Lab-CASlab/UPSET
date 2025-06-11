@@ -1,0 +1,155 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : W-2024.09-SP2
+// Date      : Fri Mar 28 13:22:17 2025
+/////////////////////////////////////////////////////////////
+
+
+module s400 ( GND, VDD, CK, CLR, FM, GRN1, GRN2, RED1, RED2, TEST, YLW1, YLW2
+ );
+  input GND, VDD, CK, CLR, FM, TEST;
+  output GRN1, GRN2, RED1, RED2, YLW1, YLW2;
+  wire   TESTL, TESTLVIINLATCHVCDAD, FML, FMLVIINLATCHVCDAD, OLATCH_Y2L,
+         TCOMB_YA2, OLATCHVUC_6, Y1C, OLATCHVUC_5, R2C, OLATCH_R1L, OLATCH_G2L,
+         TCOMB_GA2, OLATCH_G1L, TCOMB_GA1, OLATCH_FEL, C3_Q3, C3_Q3VD, C3_Q2,
+         C3_Q2VD, C3_Q1, C3_Q1VD, C3_Q0, C3_Q0VD, UC_16, UC_16VD, UC_17,
+         UC_17VD, UC_18, UC_18VD, UC_19, UC_19VD, UC_8, UC_8VD, UC_9, UC_9VD,
+         UC_10, UC_10VD, UC_11, UC_11VD, n1, n2, n3, n4, n7, n8, n9, n10, n11,
+         n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25,
+         n26, n27, n28, n29, n30, n31, n32, n33, n34, n35, n36, n37, n38, n39,
+         n40, n41, n42, n43, n44, n45, n46, n47, n48, n49, n50, n51, n52, n53,
+         n54, n55, n56, n57, n58, n59, n60, n61, n62, \DFF_1/n1 , \DFF_8/D ,
+         \DFF_5/D ;
+  assign YLW2 = OLATCH_Y2L;
+  assign RED1 = OLATCH_R1L;
+  assign GRN2 = OLATCH_G2L;
+  assign GRN1 = OLATCH_G1L;
+
+  sg13g2_a21oi_2 U1 ( .A1(C3_Q0), .A2(n12), .B1(n9), .Y(n19) );
+  sg13g2_a21oi_2 U2 ( .A1(n21), .A2(n3), .B1(n22), .Y(Y1C) );
+  sg13g2_nor2b_2 U3 ( .B_N(n21), .A(UC_17), .Y(n22) );
+  sg13g2_nor2_2 U4 ( .A(CLR), .B(C3_Q2), .Y(n28) );
+  sg13g2_nor2_2 U5 ( .A(C3_Q3), .B(n2), .Y(n26) );
+  sg13g2_nor3_2 U6 ( .A(n29), .B(n17), .C(n30), .Y(UC_9VD) );
+  sg13g2_a21oi_2 U7 ( .A1(UC_11), .A2(UC_10), .B1(UC_9), .Y(n30) );
+  sg13g2_a21oi_2 U8 ( .A1(n31), .A2(n16), .B1(n29), .Y(UC_8VD) );
+  sg13g2_nor2_2 U9 ( .A(n32), .B(n33), .Y(UC_19VD) );
+  sg13g2_nor3_2 U10 ( .A(n32), .B(n35), .C(n36), .Y(UC_18VD) );
+  sg13g2_a21oi_2 U11 ( .A1(UC_19), .A2(n34), .B1(UC_18), .Y(n36) );
+  sg13g2_nor2_2 U12 ( .A(n32), .B(n37), .Y(UC_17VD) );
+  sg13g2_a21oi_2 U13 ( .A1(n38), .A2(n15), .B1(n32), .Y(UC_16VD) );
+  sg13g2_nand2_2 U14 ( .A(n39), .B(n18), .Y(n32) );
+  sg13g2_nand2_2 U15 ( .A(UC_17), .B(n35), .Y(n38) );
+  sg13g2_nor2_2 U16 ( .A(UC_11), .B(n29), .Y(UC_11VD) );
+  sg13g2_nor2_2 U17 ( .A(n40), .B(n29), .Y(UC_10VD) );
+  sg13g2_nand2_2 U18 ( .A(n41), .B(n18), .Y(n29) );
+  sg13g2_nor2_2 U19 ( .A(CLR), .B(n42), .Y(TESTLVIINLATCHVCDAD) );
+  sg13g2_nor2b_2 U20 ( .B_N(n43), .A(n20), .Y(TCOMB_YA2) );
+  sg13g2_nor4_2 U21 ( .A(n27), .B(n43), .C(n44), .D(n45), .Y(TCOMB_GA2) );
+  sg13g2_nor2_2 U22 ( .A(n46), .B(n47), .Y(TCOMB_GA1) );
+  sg13g2_a21oi_2 U23 ( .A1(n7), .A2(n3), .B1(n50), .Y(R2C) );
+  sg13g2_nor2_2 U24 ( .A(UC_17), .B(n51), .Y(n50) );
+  sg13g2_nor2_2 U25 ( .A(n8), .B(CLR), .Y(n45) );
+  sg13g2_nor4_2 U26 ( .A(n14), .B(C3_Q1), .C(C3_Q3), .D(FML), .Y(n48) );
+  sg13g2_nand2_2 U27 ( .A(FML), .B(n25), .Y(n49) );
+  sg13g2_nand2_2 U28 ( .A(n11), .B(n8), .Y(n20) );
+  sg13g2_nor3_2 U29 ( .A(C3_Q0), .B(CLR), .C(n9), .Y(n44) );
+  sg13g2_nor2_2 U30 ( .A(CLR), .B(n52), .Y(FMLVIINLATCHVCDAD) );
+  sg13g2_a21oi_2 U31 ( .A1(n53), .A2(n9), .B1(n54), .Y(C3_Q3VD) );
+  sg13g2_nand2_2 U32 ( .A(n57), .B(C3_Q2), .Y(n53) );
+  sg13g2_nor2_2 U33 ( .A(n11), .B(CLR), .Y(n27) );
+  sg13g2_nor3_2 U34 ( .A(n14), .B(CLR), .C(n12), .Y(n43) );
+  sg13g2_nor3_2 U35 ( .A(n54), .B(n57), .C(n58), .Y(C3_Q1VD) );
+  sg13g2_a21oi_2 U36 ( .A1(n1), .A2(C3_Q0), .B1(C3_Q1), .Y(n58) );
+  sg13g2_nor3_2 U37 ( .A(n12), .B(n14), .C(n39), .Y(n57) );
+  sg13g2_nor2_2 U38 ( .A(n59), .B(n54), .Y(C3_Q0VD) );
+  sg13g2_nand2_2 U39 ( .A(n56), .B(n18), .Y(n54) );
+  sg13g2_nand2_2 U40 ( .A(n60), .B(n1), .Y(n56) );
+  sg13g2_a21oi_2 U41 ( .A1(n25), .A2(n11), .B1(n9), .Y(n60) );
+  sg13g2_nor2_2 U42 ( .A(C3_Q1), .B(C3_Q0), .Y(n25) );
+  sg13g2_nand2_2 U43 ( .A(UC_8), .B(n62), .Y(n41) );
+  sg13g2_inv_2 U44 ( .A(n39), .Y(n1) );
+  sg13g2_inv_2 U45 ( .A(FML), .Y(n2) );
+  sg13g2_inv_2 U46 ( .A(\DFF_8/D ), .Y(n3) );
+  sg13g2_inv_2 U47 ( .A(n48), .Y(n4) );
+  sg13g2_inv_2 U48 ( .A(OLATCHVUC_6), .Y(YLW1) );
+  sg13g2_inv_2 U49 ( .A(OLATCHVUC_5), .Y(RED2) );
+  sg13g2_inv_2 U50 ( .A(n51), .Y(n7) );
+  sg13g2_inv_2 U51 ( .A(OLATCH_FEL), .Y(n8) );
+  sg13g2_inv_2 U52 ( .A(C3_Q3), .Y(n9) );
+  sg13g2_inv_2 U53 ( .A(n27), .Y(n10) );
+  sg13g2_inv_2 U54 ( .A(C3_Q2), .Y(n11) );
+  sg13g2_inv_2 U55 ( .A(C3_Q1), .Y(n12) );
+  sg13g2_inv_2 U56 ( .A(n25), .Y(n13) );
+  sg13g2_inv_2 U57 ( .A(C3_Q0), .Y(n14) );
+  sg13g2_inv_2 U58 ( .A(UC_16), .Y(n15) );
+  sg13g2_inv_2 U59 ( .A(UC_8), .Y(n16) );
+  sg13g2_inv_2 U60 ( .A(n31), .Y(n17) );
+  sg13g2_inv_2 U61 ( .A(CLR), .Y(n18) );
+  sg13g2_o21ai_1 U62 ( .A1(n19), .A2(n20), .B1(n18), .Y(\DFF_5/D ) );
+  sg13g2_o21ai_1 U63 ( .A1(n23), .A2(n13), .B1(n24), .Y(n21) );
+  sg13g2_a22oi_1 U64 ( .A1(n26), .A2(n27), .B1(n28), .B2(C3_Q3), .Y(n23) );
+  sg13g2_nand3_1 U65 ( .A(UC_11), .B(UC_10), .C(UC_9), .Y(n31) );
+  sg13g2_xnor2_1 U66 ( .A(UC_19), .B(n34), .Y(n33) );
+  sg13g2_o21ai_1 U67 ( .A1(n35), .A2(UC_17), .B1(n38), .Y(n37) );
+  sg13g2_and3_1 U68 ( .A(UC_19), .B(n34), .C(UC_18), .X(n35) );
+  sg13g2_xnor2_1 U69 ( .A(UC_10), .B(UC_11), .Y(n40) );
+  sg13g2_xnor2_1 U70 ( .A(TESTL), .B(TEST), .Y(n42) );
+  sg13g2_o21ai_1 U71 ( .A1(n2), .A2(n9), .B1(n27), .Y(n47) );
+  sg13g2_o21ai_1 U72 ( .A1(n48), .A2(n8), .B1(n49), .Y(n46) );
+  sg13g2_o21ai_1 U73 ( .A1(n49), .A2(n10), .B1(n24), .Y(\DFF_8/D ) );
+  sg13g2_o21ai_1 U74 ( .A1(n4), .A2(n11), .B1(n45), .Y(n24) );
+  sg13g2_a22oi_1 U75 ( .A1(n44), .A2(n12), .B1(n18), .B2(n20), .Y(n51) );
+  sg13g2_xnor2_1 U76 ( .A(FML), .B(FM), .Y(n52) );
+  sg13g2_and3_1 U77 ( .A(n55), .B(n56), .C(n53), .X(C3_Q2VD) );
+  sg13g2_a21o_1 U78 ( .A1(n1), .A2(n43), .B1(n27), .X(n55) );
+  sg13g2_xnor2_1 U79 ( .A(n1), .B(C3_Q0), .Y(n59) );
+  sg13g2_nand3_1 U80 ( .A(n61), .B(n34), .C(UC_16), .Y(n39) );
+  sg13g2_nand2b_1 U81 ( .A_N(TESTL), .B(n41), .Y(n34) );
+  sg13g2_or3_1 U82 ( .A(UC_11), .B(UC_9), .C(UC_10), .X(n62) );
+  sg13g2_or3_1 U83 ( .A(UC_18), .B(UC_19), .C(UC_17), .X(n61) );
+  sg13g2_dfrbp_1 \DFF_0/Q_reg  ( .D(TESTLVIINLATCHVCDAD), .CLK(CK), .RESET_B(
+        \DFF_1/n1 ), .Q(TESTL) );
+  sg13g2_dfrbp_1 \DFF_20/Q_reg  ( .D(UC_11VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_11) );
+  sg13g2_dfrbp_1 \DFF_19/Q_reg  ( .D(UC_10VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_10) );
+  sg13g2_dfrbp_1 \DFF_18/Q_reg  ( .D(UC_9VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_9) );
+  sg13g2_dfrbp_1 \DFF_17/Q_reg  ( .D(UC_8VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_8) );
+  sg13g2_dfrbp_1 \DFF_16/Q_reg  ( .D(UC_19VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_19) );
+  sg13g2_dfrbp_1 \DFF_15/Q_reg  ( .D(UC_18VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_18) );
+  sg13g2_dfrbp_1 \DFF_14/Q_reg  ( .D(UC_17VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_17) );
+  sg13g2_dfrbp_1 \DFF_13/Q_reg  ( .D(UC_16VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(UC_16) );
+  sg13g2_dfrbp_1 \DFF_12/Q_reg  ( .D(C3_Q0VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(C3_Q0) );
+  sg13g2_dfrbp_1 \DFF_11/Q_reg  ( .D(C3_Q1VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(C3_Q1) );
+  sg13g2_dfrbp_1 \DFF_10/Q_reg  ( .D(C3_Q2VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(C3_Q2) );
+  sg13g2_dfrbp_1 \DFF_9/Q_reg  ( .D(C3_Q3VD), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(C3_Q3) );
+  sg13g2_dfrbp_1 \DFF_8/Q_reg  ( .D(\DFF_8/D ), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(OLATCH_FEL) );
+  sg13g2_dfrbp_1 \DFF_7/Q_reg  ( .D(TCOMB_GA1), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(OLATCH_G1L) );
+  sg13g2_dfrbp_1 \DFF_6/Q_reg  ( .D(TCOMB_GA2), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(OLATCH_G2L) );
+  sg13g2_dfrbp_1 \DFF_5/Q_reg  ( .D(\DFF_5/D ), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(OLATCH_R1L) );
+  sg13g2_dfrbp_1 \DFF_4/Q_reg  ( .D(R2C), .CLK(CK), .RESET_B(\DFF_1/n1 ), .Q(
+        OLATCHVUC_5) );
+  sg13g2_dfrbp_1 \DFF_3/Q_reg  ( .D(Y1C), .CLK(CK), .RESET_B(\DFF_1/n1 ), .Q(
+        OLATCHVUC_6) );
+  sg13g2_dfrbp_1 \DFF_2/Q_reg  ( .D(TCOMB_YA2), .CLK(CK), .RESET_B(\DFF_1/n1 ), 
+        .Q(OLATCH_Y2L) );
+  sg13g2_dfrbp_1 \DFF_1/Q_reg  ( .D(FMLVIINLATCHVCDAD), .CLK(CK), .RESET_B(
+        \DFF_1/n1 ), .Q(FML) );
+  sg13g2_tiehi U84 ( .L_HI(\DFF_1/n1 ) );
+endmodule
+
