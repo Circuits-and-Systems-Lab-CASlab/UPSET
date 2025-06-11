@@ -1,0 +1,2389 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="tutorial_flows.html">
+      
+      
+        <link rel="next" href="reference_card.html">
+      
+      
+      <link rel="icon" href="assets/UPSET_logo.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Commands Reference - UPSET Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#commands-reference-manual" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="UPSET Documentation" class="md-header__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UPSET Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Commands Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="UPSET Documentation" class="md-nav__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    UPSET Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker_setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tool_fundamentals.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tool Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design_configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Design Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_analysis_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Analysis Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_sensitivity_metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Sensitivity Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_optimisation_techniques.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Mitigation Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="top_level_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top-Level Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Appendices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Commands Reference
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="commands_reference.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commands Reference
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#load_lef" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_lef
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_lib
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_verilog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_spef" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_spef
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readload_saif" class="md-nav__link">
+    <span class="md-ellipsis">
+      read/load_saif
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_saif_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_saif_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_timing_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_timing_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_timing_rc_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_timing_RC_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_analysis_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_analysis_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_clock
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_input_delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_input_delay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_output_delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_output_delay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_timing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_particle_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_particle_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete_particle_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete_particle_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_particle_profiles_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_particle_profiles_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_particle_profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_particle_profiles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_set_scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_SET_scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_static_probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_static_probability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_cubes_propagating_input_sets_to_output" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_cubes_propagating_input_SETs_to_output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_static_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_static_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset_static_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_static_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_generation_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_generation_parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_scenario_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_scenario_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_scenario_custom_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_scenario_custom_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#propagate_set_scenario_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      propagate_SET_scenario_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_glitch_propagation_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_glitch_propagation_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#propagate_set_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      propagate_SET_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_net_supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_net_supply
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulate_net" class="md-nav__link">
+    <span class="md-ellipsis">
+      simulate_net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_spice_simulation_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_spice_simulation_parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_net_spice_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_net_spice_probe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot_spice_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_spice_probe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_spice_probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_spice_probes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform_exhaustive_set_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      perform_exhaustive_SET_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform_set_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      perform_SET_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_gatepins_set_analysis_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_gatepins_set_analysis_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_all_gatepin_set_analysis_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_all_gatepin_set_analysis_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_set_scenario_timingpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_SET_scenario_timingpoints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_set_generation_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_SET_generation_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_swap_component_pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_swap_component_pins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_upsize_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_upsize_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_downsize_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_downsize_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_charge_sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_charge_sharing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_fanout_decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_fanout_decomposition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_tmr_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_tmr_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_insert_filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_insert_filter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_insert_cascaded_inverter" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_insert_cascaded_inverter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legalise_components" class="md-nav__link">
+    <span class="md-ellipsis">
+      legalise_components
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference_card.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#load_lef" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_lef
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_lib
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_verilog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_spef" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_spef
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readload_saif" class="md-nav__link">
+    <span class="md-ellipsis">
+      read/load_saif
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_saif_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_saif_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_timing_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_timing_model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_timing_rc_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_timing_RC_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_analysis_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_analysis_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_clock
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_input_delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_input_delay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_output_delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_output_delay
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_timing" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_timing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_particle_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_particle_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete_particle_profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete_particle_profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_particle_profiles_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_particle_profiles_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_particle_profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_particle_profiles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_set_scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_SET_scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_set_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_SET_scenarios
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clear_set_scenario_case_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_SET_scenario_case_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_static_probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_static_probability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_cubes_propagating_input_sets_to_output" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_cubes_propagating_input_SETs_to_output
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_static_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_static_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset_static_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_static_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_generation_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_generation_parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_scenario_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_scenario_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_scenario_custom_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_scenario_custom_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#propagate_set_scenario_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      propagate_SET_scenario_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_set_glitch_propagation_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_SET_glitch_propagation_mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate_set_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_SET_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#propagate_set_glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      propagate_SET_glitch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_net_supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_net_supply
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulate_net" class="md-nav__link">
+    <span class="md-ellipsis">
+      simulate_net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set_spice_simulation_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_spice_simulation_parameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create_net_spice_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      create_net_spice_probe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot_spice_probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      plot_spice_probe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_spice_probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_spice_probes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform_exhaustive_set_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      perform_exhaustive_SET_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform_set_analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      perform_SET_analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_gatepins_set_analysis_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_gatepins_set_analysis_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list_all_gatepin_set_analysis_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_all_gatepin_set_analysis_info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_set_scenario_timingpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_SET_scenario_timingpoints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report_set_generation_probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      report_SET_generation_probabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_swap_component_pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_swap_component_pins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_upsize_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_upsize_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_downsize_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_downsize_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_charge_sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_charge_sharing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_fanout_decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_fanout_decomposition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_tmr_component" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_tmr_component
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_insert_filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_insert_filter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eco_insert_cascaded_inverter" class="md-nav__link">
+    <span class="md-ellipsis">
+      eco_insert_cascaded_inverter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legalise_components" class="md-nav__link">
+    <span class="md-ellipsis">
+      legalise_components
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="commands-reference-manual">Commands Reference Manual</h1>
+<h2 id="load_lef">load_lef</h2>
+<p>Import LEF library files. Technology LEF, i.e. the LEF containing the routing layer info, must be the first in the line.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_lef</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">filenames</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;filenames&gt;</code> is the list of the LEF files to be loaded</li>
+</ul>
+<h2 id="load_lib">load_lib</h2>
+<p>Import LIB library files. Each LIB file is read as a corner. Error reporting is enabled using the <code>-errors</code> flag.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_lib</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">filenames</span><span class="o">&gt;</span><span class="k">}</span><span class="w"> </span><span class="o">?-</span>errors<span class="o">?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;filenames&gt;</code> is the list of the LIB files to be loaded</li>
+<li><code>-errors</code> is an optional flag that enables error reporting</li>
+</ul>
+<h2 id="load_verilog">load_verilog</h2>
+<p>Import design. Supported format is gate-level Verilog netlist.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_verilog</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">filenames</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<h2 id="load_spef">load_spef</h2>
+<p>Import design parasitics. Supported format is SPEF. Different parasitics may be used for worst case and best case analysis Arguments <code>-longest</code> and <code>-shortest</code> are used to associate parasitics with analysis type. Error report is enabled using the <code>-errors</code> flag.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_spef</span><span class="w"> </span><span class="k">(</span><span class="nv">-longest</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>shortest<span class="k">)</span><span class="w"> </span><span class="o">?-</span>errors<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="nv">filenames</span><span class="k">}</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-longest</code>is for the worst case analysis</li>
+<li><code>-shortest</code> is for the best case analysis</li>
+<li><code>-errors</code> is an optional flag that enables error reporting</li>
+</ul>
+<h2 id="readload_saif">read/load_saif</h2>
+<p>Import SAIF file. A SAIF file is used to annotate the circuit of each gatepin switching activity and logic state duration during simulation.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">read_saif</span><span class="w"> </span><span class="o">&lt;</span>saif_file_<span class="o">&gt;</span>
+<span class="c"># or alternatively</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_saif</span><span class="w"> </span><span class="o">&lt;</span>saif_file_<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="list_saif_info">list_saif_info</h2>
+<p>List all SAIF information stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_saif_info</span>
+</code></pre></div>
+<h2 id="set_timing_model">set_timing_model</h2>
+<p>Define the timing model used in the current session.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_timing_model</span><span class="w"> </span><span class="o">&lt;</span>nldm<span class="w"> </span><span class="o">|</span><span class="w"> </span>ccs<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="set_timing_rc_mode">set_timing_RC_mode</h2>
+<p>Define the interconnect timing model used in the current session.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_timing_RC_mode</span><span class="w"> </span><span class="o">&lt;</span>lumpedRC<span class="w"> </span><span class="o">|</span><span class="w"> </span>pimodelRC<span class="w"> </span><span class="o">|</span><span class="w"> </span>detailedRC<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="set_set_analysis_mode">set_SET_analysis_mode</h2>
+<p>Set the SET analysis mode. Two modes are available, Vector-based and Probabilistic. Each mode is described at Section <a href="set_analysis_flow.html#set-propagation-sta-modes">SET Propagation STA-modes</a>. The default analysis mode is Vector-based.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_analysis_mode</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span>Vector-based<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span>Probabilistic<span class="o">&gt;</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_analysis_mode</span><span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+</div>
+<h2 id="create_clock">create_clock</h2>
+<p><img alt="Clock Waveform" src="figures/clock_waveform_2.png" /></p>
+<p>Create a clock in the current design and define its waveform. The <code>-waveform</code> argument is optional and can be used to create a pulse whose edges are explicitly defined with the given timestamps.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_clock</span><span class="w"> </span><span class="o">&lt;</span>source_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>period<span class="w"> </span><span class="o">&lt;</span>period_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>name<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>waveform<span class="w"> </span><span class="k">{</span><span class="nv">edge_list</span><span class="k">}</span><span class="o">?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-period</code> is the period of the clock</li>
+<li><code>-name</code> is the name of the clock</li>
+<li><code>-waveform</code> is the waveform rise and fall edge pairs</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_clock</span><span class="w"> </span>clk<span class="w"> </span><span class="o">-</span>name<span class="w"> </span>clk<span class="w"> </span><span class="o">-</span>period<span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span>waveform<span class="w"> </span><span class="k">{</span><span class="nv">0</span><span class="w"> </span><span class="mi">8</span><span class="k">}</span>
+</code></pre></div>
+</div>
+<h2 id="set_input_delay">set_input_delay</h2>
+<p>Set delay from environment launching elements to design Top-Level inputs and constrain them. Specified delay may be used for worst case or best case analysis. Also, specified delay direction can be either rise or fall. Input delay must be specified with reference to a clock. Argument <code>-clock</code> is used to specify the reference clock.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_input_delay</span><span class="w"> </span><span class="o">&lt;</span>delay_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>clock<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>rise<span class="o">|-</span>fall<span class="o">?</span><span class="w"> </span><span class="o">?-</span>max<span class="o">|-</span>min<span class="o">?</span><span class="w"> </span><span class="o">?-</span>add_delay<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="nv">port_pin_list</span><span class="k">}</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-clock</code> is the name of the reference clock</li>
+<li><code>-rise</code> is for rise delay specification</li>
+<li><code>-fall</code> is for fall delay specification</li>
+<li><code>-max</code> is for worst case analysis</li>
+<li><code>-min</code> is for best case analysis</li>
+<li><code>-add_delay</code> is used to add the specified delay to the already stored delay</li>
+</ul>
+<h2 id="set_output_delay">set_output_delay</h2>
+<p>Set delay from design Top-Level outputs to environment capturing elements and constrain them. The specified delay must be used either for worst-case or best-case analysis. Also, the specified delay direction can be either rise or fall. Output delay must be specified with reference to a capturing clock. Argument <code>-clock</code> is used to specify the reference clock.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_output_delay</span><span class="w"> </span><span class="o">&lt;</span>delay_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>clock<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>rise<span class="o">|-</span>fall<span class="o">?</span><span class="w"> </span><span class="o">?-</span>max<span class="o">|-</span>min<span class="o">?</span><span class="w"> </span><span class="o">?-</span>add_delay<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="nv">port_pin_list</span><span class="k">}</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-clock</code> is the name of the reference clock</li>
+<li><code>-rise</code> is for rise delay specification</li>
+<li><code>-fall</code> is for fall delay specification</li>
+<li><code>-max</code> is for worst case analysis</li>
+<li><code>-min</code> is for best case analysis</li>
+<li><code>-add_delay</code> is used to add the specified delay to the already stored delay</li>
+</ul>
+<h2 id="report_timing">report_timing</h2>
+<p>Perform STA using the specified library corner. Both worst case and best case analysis are supported. Also, for performance reasons, slack is calculated by default only on timing path endpoints. Argument <code>-backannotate</code> is used to calculate global slack.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">report_timing</span><span class="w"> </span><span class="o">?-</span>longest<span class="o">|-</span>shortest<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>backannotate<span class="o">?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-longest</code> is for the worst case analysis</li>
+<li><code>-shortest</code> is for the best case analysis</li>
+<li><code>-corner</code> is used to select the library corner to be used for the STA timing analysis</li>
+<li><code>-backannotate</code> is used to calculate global slack</li>
+</ul>
+<h2 id="create_particle_profile">create_particle_profile</h2>
+<p>Create a particle profile from the parameters of Double Exponential (DEXP) current source (tdelay, tau1, tau2, q).</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_particle_profile</span><span class="w"> </span><span class="o">-</span>name<span class="w"> </span><span class="o">&lt;</span>name<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tdelay<span class="w"> </span><span class="o">&lt;</span>double<span class="w"> </span>exponential<span class="w"> </span>delay<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tau1<span class="w"> </span><span class="o">&lt;</span>double<span class="w"> </span>exponential<span class="w"> </span>tau1<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tau2<span class="w"> </span><span class="o">&lt;</span>double<span class="w"> </span>exponential<span class="w"> </span>tau2<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>q<span class="w"> </span><span class="o">&lt;</span>double<span class="w"> </span>exponential<span class="w"> </span>q<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-name</code> is the name of the particle profile</li>
+<li><code>-tdelay</code> is the delay till the start of the current pulse waveform</li>
+<li><code>-tau1</code> is the rise time of the pulse waveform</li>
+<li><code>-tau2</code> is the fall time of the pulse waveform</li>
+<li><code>-q</code> is the collected charge which is relevant to the peak current of the pulse waveform</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="nv">create_particle_profile</span><span class="w"> </span><span class="o">-</span>name<span class="w"> </span>p1<span class="w"> </span><span class="o">-</span>tdelay<span class="w"> </span><span class="mf">0.1</span>ns<span class="w"> </span><span class="o">-</span>tau1<span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span>tau2<span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">-</span>q<span class="w"> </span><span class="mi">400</span>
+</code></pre></div>
+</div>
+<h2 id="delete_particle_profile">delete_particle_profile</h2>
+<p>Delete a particle profile from memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">delete_particle_profile</span><span class="w"> </span><span class="o">&lt;</span>profile_name<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="clear_particle_profiles_info">clear_particle_profiles_info</h2>
+<p>Clear all the particle profiles stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_particle_profiles_info</span>
+</code></pre></div>
+<h2 id="list_particle_profiles">list_particle_profiles</h2>
+<p>List all the particle profiles stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_particle_profiles</span>
+</code></pre></div>
+<h2 id="create_set_scenario">create_SET_scenario</h2>
+<p>Create a single SET scenario in memory. The create SET scenario will be considered when generating SET pulses. User can either define a particle profile with <code>-profile</code> parameter or by specify right away the parameters of the DEXP current source.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_SET_scenario</span><span class="w"> </span><span class="o">&lt;</span>driver_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">?&lt;</span>endpoint<span class="o">&gt;?</span><span class="w"> </span><span class="k">(</span><span class="nv">-profile</span><span class="w"> </span><span class="o">&lt;</span>particle_profile_name<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">&lt;</span>tdelay<span class="o">&gt;</span>n<span class="w"> </span><span class="o">&lt;</span>tau1<span class="o">&gt;</span>p<span class="w"> </span><span class="o">&lt;</span>tau2<span class="o">&gt;</span>p<span class="w"> </span><span class="o">&lt;</span>q<span class="o">&gt;</span><span class="k">)</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;driver_gatepin&gt;</code> is the name of the driver gate pin</li>
+<li><code>&lt;endpoint&gt;</code> is the name of the endpoint gate pin (for which information is stored)</li>
+<li><code>&lt;particle_profile_name&gt;</code> is the name of the particle profile</li>
+<li><code>&lt;tdelay&gt;</code> is the delay till the start of the current pulse waveform</li>
+<li><code>&lt;tau1&gt;</code> is the rise time of the pulse waveform</li>
+<li><code>&lt;tau2&gt;</code> is the fall time of the pulse waveform</li>
+<li><code>&lt;q&gt;</code> is the collected charge which is relevant to the peak current of the pulse waveform</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><strong>Example 1:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">create_SET_scenario</span><span class="w"> </span>SET_testcase<span class="o">/</span>U25<span class="o">/</span>Q<span class="w"> </span><span class="mf">0.1</span>n<span class="w"> </span><span class="mi">47</span>p<span class="w"> </span><span class="mi">347</span>p<span class="w"> </span><span class="mi">700</span>f
+</code></pre></div>
+<p><strong>Example 2:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">create_SET_scenario</span><span class="w"> </span>SET_testcase<span class="o">/</span>U25<span class="o">/</span>Q<span class="w"> </span><span class="o">-</span>profile<span class="w"> </span>p1
+</code></pre></div>
+</div>
+<h2 id="load_set_scenarios">load_SET_scenarios</h2>
+<p>A scenario file consists of scenarios specifying a driver pin, an endpoint and the parameters of the Double Exponential (DEXP) current source (<code>tdelay</code>, <code>tau1</code>, <code>tau2</code>, <code>q</code>).</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Scenario file example:</p>
+<div class="highlight"><pre><span></span><code>module1/reg1/Q module1/reg2/D 0.5n 54p 391p 342f
+module2/reg1/Q module2/reg2/D 0.5n 56p 377p 367f
+</code></pre></div>
+</div>
+<p>The command is used to load a scenario file in memory, which will be used to generate SET pulses in future releases.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_SET_scenarios</span><span class="w"> </span><span class="o">&lt;</span>filename<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;filename&gt;</code> is the name of the scenario file</li>
+</ul>
+<h2 id="list_set_scenario">list_SET_scenario</h2>
+<p>List information for a specific SET scenario based on the specified scenario index.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenario</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="list_set_scenarios">list_SET_scenarios</h2>
+<p>List information for all the SET scenarios stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenarios</span>
+</code></pre></div>
+<h2 id="clear_set_scenarios">clear_SET_scenarios</h2>
+<p>Clear all the SET scenarios stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_SET_scenarios</span>
+</code></pre></div>
+<h2 id="create_set_scenario_case_analysis">create_SET_scenario_case_analysis</h2>
+<p>Create SET case analysis for specified scenario (<code>-scenario</code>). SET case analysis consists of a scenario index, which represents the affected scenario, a boolean constant value which is applied to specified gatepins and a list of gatepins which will be set to previously defined constant value.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario<span class="w"> </span>index<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>boolean<span class="w"> </span>constant<span class="w"> </span>value<span class="o">&gt;</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">gatepin</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>buffer_tree<span class="o">/</span>AND1<span class="o">/</span>B
+</code></pre></div>
+</div>
+<h2 id="list_set_scenario_case_analysis">list_SET_scenario_case_analysis</h2>
+<p>List specified SET scenario case analysis info. Use <code>-all</code> argument to list all SET scenarios’ case analysis info.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario<span class="w"> </span>index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all
+</code></pre></div>
+<h2 id="clear_set_scenario_case_analysis">clear_SET_scenario_case_analysis</h2>
+<p>Clear specified SET scenario case analysis info. Use <code>-all</code> argument to clear all SET scenarios case analysis info.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario<span class="w"> </span>index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all
+</code></pre></div>
+<h2 id="set_static_probability">set_static_probability</h2>
+<p>Set the logic-1 static probability value to the specified gatepin. Use -value argument to define the probability value. Note that the logic-1 and logic-0 probabilities are complementary, so only one of the two must be defined. Use -gatepin argument to define the gatepin for which the probability is set. Use -all argument to set the probability for all gatepins. Use <code>-startpoints</code> argument to set the probability for startpoint gatepins.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_static_probability</span><span class="w"> </span><span class="o">-</span>value<span class="w"> </span><span class="o">&lt;</span>probability_value<span class="o">&gt;</span><span class="w"> </span><span class="k">(</span><span class="nv">-gatepin</span><span class="w"> </span><span class="o">&lt;</span>gatepin_name<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>startpoints<span class="k">)</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-value</code> is the static probability logic-1 value</li>
+<li><code>-gatepin &lt;gatepin_name&gt;</code> is the name of the gatepin for which the probability is to be set</li>
+<li><code>-all</code> is used to set the probability for all gatepins</li>
+<li><code>-startpoints</code> is used to set the probability for startpoint gatepins</li>
+</ul>
+<h2 id="list_cubes_propagating_input_sets_to_output">list_cubes_propagating_input_SETs_to_output</h2>
+<p>Generate a list of Boolean cubes containing the side-input values that enable the propagation of SETs from the inputs of the gate to the specified output gatepin.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_cubes_propagating_input_SETs_to_output</span><span class="w"> </span><span class="o">&lt;</span>gatepin_name<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>inputSET<span class="w"> </span><span class="k">[</span><span class="o">&lt;</span><span class="nv">0</span><span class="w"> </span><span class="k">(</span><span class="nv">logic-0</span><span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">logic-1</span><span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">0</span>e<span class="w"> </span><span class="k">(</span><span class="nv">negative</span><span class="w"> </span>SET<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span>e<span class="w"> </span><span class="k">(</span><span class="nv">positive</span><span class="w"> </span>SET<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>dc<span class="w"> </span><span class="k">(</span><span class="nv">don</span><span class="err">&#39;</span>t<span class="w"> </span>care<span class="k">)</span><span class="o">&gt;</span><span class="w"> </span>...<span class="k">]</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>inputSET</code> is the list of input SETs. Available options are <strong>0</strong> (logic-0), <strong>1</strong> (logic-1), <strong>0e</strong> (negative SET), <strong>1e</strong> (positive SET), <strong>dc</strong> (don't care)</li>
+</ul>
+<!-- TODO: add example -->
+
+<h2 id="list_static_probabilities">list_static_probabilities</h2>
+<p>Propagate and list all static probabilities stored in memory per gatepin in a column format report. Use <code>-significant_digits</code> argument to set the floating point precision in the report.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_static_probabilities</span><span class="w"> </span><span class="o">-</span>significant_digits<span class="w"> </span><span class="o">&lt;</span>significant_digits<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-significant_digits</code> is the floating point precision in the report</li>
+</ul>
+<h2 id="reset_static_probabilities">reset_static_probabilities</h2>
+<p>Reset static probabilities annotated by SAIF file or set by <a href="#set_static_probability">set_static_probability</a></p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">reset_static_probabilities</span>
+</code></pre></div>
+<h2 id="set_set_generation_parameters">set_SET_generation_parameters</h2>
+<p>Set the SET generation model and each model’s parameters. Two models can be specified, Double Exponential (<strong>DEXP</strong>) or Bias Dependent (BIAS). Bias Dependent model parameters consist of the auxiliary Capacitance (<code>-biascapacitance</code>), Recombination Currents (<code>-recomb</code>) and Fermi (<code>-fermi</code>) constants. SET generation model and its parameters apply to all loaded scenarios when generate_SET_glitch or generate_SET_scenario_glitch are used to generate the SET glitch.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_generation_parameters</span><span class="w"> </span><span class="o">-</span>model<span class="w"> </span><span class="o">&lt;</span>DEXP<span class="w"> </span><span class="o">|</span><span class="w"> </span>BIAS<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>biascapacitance<span class="w"> </span><span class="o">&lt;</span>BIAS<span class="w"> </span>capacitance<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>recomb<span class="w"> </span><span class="o">&lt;</span>recombination<span class="w"> </span>currents<span class="w"> </span>constant<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>fermi<span class="w"> </span><span class="o">&lt;</span>fermi<span class="w"> </span>constant<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-model</code> is the SET generation model (Double Exponential or Bias Dependent)</li>
+<li><code>-biascapacitance</code> is Bias Dependent model auxilary capacitance to enure charge conservation</li>
+<li><code>-recomb</code> is the Bias Dependent model Recombination Currents constant</li>
+<li><code>-fermi</code> is the Bias Dependent model Fermi constant</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_generation_parameters</span><span class="w"> </span><span class="o">-</span>model<span class="w"> </span>BIAS<span class="w"> </span><span class="o">-</span>biascapacitance<span class="w"> </span><span class="mi">1</span>p<span class="w"> </span><span class="o">-</span>recomb<span class="w"> </span><span class="mi">1</span>e11<span class="w"> </span><span class="o">-</span>fermi<span class="w"> </span><span class="mf">0.01</span>
+</code></pre></div>
+</div>
+<h2 id="generate_set_scenario_glitch">generate_SET_scenario_glitch</h2>
+<p>Generate an SET glitch from a single scenario (<code>-scenario</code>) load in memory or from all scenarios (<code>-all</code>) loaded and store the rise and fall arrival times and slews at the receiver gatepins of the driver gatepin net.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">?-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-scenario</code> is the scenario index to be used for the SET glitch generation</li>
+<li><code>-all</code> is used to generate the SET glitch for all the defined SET scenarios</li>
+<li><code>-corner</code> is the index of the library corner to be used for the SET glitch generation</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+</div>
+<h2 id="generate_set_scenario_custom_glitch">generate_SET_scenario_custom_glitch</h2>
+<p>Generate a SET glitch as a PWL (Piece Wise Linear) voltage waveform to a receiver gatepin and store it as a new scenario. Afterwards, the specified glitch can be propagated through propagate_SET_scenario_glitch.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_custom_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>receivergatepin<span class="o">&gt;</span><span class="w"> </span><span class="k">{</span><span class="nv">t0</span><span class="w"> </span>v0<span class="w"> </span>t1<span class="w"> </span>v1<span class="w"> </span>...<span class="w"> </span>tn<span class="w"> </span>vn<span class="k">}</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-scenario</code> is the SET generation scenario, PWL Voltage Waveform at a receiver gatepin</li>
+<li><code>-corner</code> is the index of the library corner to be used for the SET glitch generation</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_custom_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span>buffer_tree<span class="o">/</span>U2<span class="o">/</span>A<span class="w"> </span><span class="k">{</span><span class="nv">0n</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span>n<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mf">1.005</span>n<span class="w"> </span><span class="mf">0.20</span><span class="w"> </span><span class="mf">1.015</span>n<span class="w"> </span><span class="mf">0.90</span><span class="w"> </span><span class="mf">1.02</span>n<span class="w"> </span><span class="mf">1.08</span><span class="w"> </span><span class="mf">1.09</span>n<span class="w"> </span><span class="mf">1.08</span><span class="w"> </span><span class="mf">1.2</span>n<span class="w"> </span><span class="mf">0.9</span><span class="w"> </span><span class="mf">1.6</span>n<span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="mf">1.8</span>n<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span>n<span class="w"> </span><span class="mi">0</span><span class="k">}</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+</div>
+<h2 id="propagate_set_scenario_glitch">propagate_SET_scenario_glitch</h2>
+<p>Propagate a SET glitch from a single scenario loaded in memory (<code>-scenario</code>) or from all scenarios loaded (<code>-all</code>). Before running this command, the SET pulse must be generated, using the command <a href="#generate_set_scenario_glitch">generate_SET_scenario_glitch</a>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">?-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-scenario</code> is the scenario index to be used for the SET glitch propagation</li>
+<li><code>-all</code> is used to propagate the SET glitch for all the defined SET scenarios</li>
+<li><code>-corner</code> is the index of the library corner to be used for the SET glitch propagation</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_scenario_glitch</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+</div>
+<h2 id="set_set_glitch_propagation_mode">set_SET_glitch_propagation_mode</h2>
+<p>Set the SET glitch propagation STA-mode. Three modes are available, <strong>"Vanilla"</strong>, <strong>Detailed Timestamp-based</strong> and <strong>Bounded Timestamp-based</strong>. Each mode is described in section <a href="set_analysis_flow.html#set-propagation-sta-modes">SET Propagation STA-modes</a>. The default mode is <strong>"Vanilla"</strong>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_glitch_propagation_mode</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Vanilla&quot;</span><span class="w"> </span>STA-mode<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span>Detailed<span class="w"> </span>TimeStamp-based<span class="w"> </span>STA-mode<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span>Bounded<span class="w"> </span>TimeStamp-based<span class="w"> </span>STA-mode<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="generate_set_glitch">generate_SET_glitch</h2>
+<p>Generate an SET glitch. The command requires specifying the SET generation scenario. The SET generation scenario consists of a specified driver pin, which represents the affected net, the endpoint where measurements are taken, and the Double Exponential Current Source (<strong>DEXP</strong>) parameters. The command created SPICE probes internally at all affected nets receivers, in order to take rise and fall arrival times and slew measurements. These probes are cleared after the glitch generation is completed. Upon completion, the command prints the calculated rise and fall arrival times and slews.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>drivergatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>endpoint<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>tdelay<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>tau1<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>tau2<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>q<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-scenario</code> is the SET generation scenario, consisting of the driver gatepin, the endpoint, and the DEXP parameters</li>
+<li><code>-corner</code> is the index of the library corner to be used for the SET glitch generation</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span>ASU_2bufs<span class="o">/</span>U1<span class="o">/</span>Y<span class="w"> </span>ASU_2bufs<span class="o">/</span>U2<span class="o">/</span>A<span class="w"> </span><span class="mf">0.1</span>n<span class="w"> </span><span class="mi">47</span>p<span class="w"> </span><span class="mi">347</span>p<span class="w"> </span><span class="mi">700</span>f<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+</div>
+<h2 id="propagate_set_glitch">propagate_SET_glitch</h2>
+<p>Propagate the rise (<code>-rise</code>) and fall (<code>-fall</code>) arrival times and slews from the input gatepin given as argument (<code>-gatepin</code>) to the forward logic cone.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_glitch</span><span class="w"> </span><span class="o">-</span>gatepin<span class="w"> </span><span class="o">&lt;</span>receivergatepinname<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>rise<span class="w"> </span><span class="k">{</span><span class="nv">risearrival_1</span><span class="w"> </span>riseslew_1<span class="w"> </span>...<span class="w"> </span>risearrival_N<span class="w"> </span>riseslew_N<span class="k">}</span><span class="w"> </span><span class="o">-</span>fall<span class="w"> </span><span class="k">{</span><span class="nv">fallarrival_1</span><span class="w"> </span>fallslew_1<span class="w"> </span>...<span class="w"> </span>fallarrival_N<span class="w"> </span>fallslew_N<span class="k">}</span><span class="w"> </span><span class="o">?-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-gatepin</code> is the name of the input gatepin from where the SET propagation starts</li>
+<li><code>-rise</code> is the list of rise arrival times and slews</li>
+<li><code>-fall</code> is the list of fall arrival times and slews</li>
+<li><code>-corner</code> is the index of the library corner to be used for the SET glitch propagation</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_glitch</span><span class="w"> </span><span class="o">-</span>gatepin<span class="w"> </span>buffer_tree<span class="o">/</span>U2<span class="o">/</span>A<span class="w"> </span><span class="o">-</span>rise<span class="w"> </span><span class="k">{</span><span class="nv">0.123118</span><span class="w"> </span><span class="mf">0.052256</span><span class="k">}</span><span class="w"> </span><span class="o">-</span>fall<span class="w"> </span><span class="k">{</span><span class="nv">0.500256</span><span class="w"> </span><span class="mf">0.693101</span><span class="k">}</span>
+</code></pre></div>
+</div>
+<h2 id="set_net_supply">set_net_supply</h2>
+<p>Set the voltage/current source supply for the specified net and define the transient specification of the supply. Supported transient specifications: Piece-Wise Linear (<strong>PWL</strong>), Double Exponential (<strong>DEXP</strong>).</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_net_supply</span><span class="w"> </span><span class="o">&lt;</span>supplyname<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>drivergatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>groundname<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>transientspec<span class="o">&gt;</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">transientspec</span><span class="w"> </span>args<span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_net_supply</span><span class="w"> </span>ISET<span class="w"> </span>ASU_2bufs<span class="o">/</span>U1<span class="o">/</span>Y<span class="w"> </span><span class="mi">0</span><span class="w"> </span>DEXP<span class="w"> </span><span class="k">{{</span><span class="nv">0.5n</span><span class="w"> </span><span class="mi">47</span>p<span class="w"> </span><span class="mi">647</span>p<span class="w"> </span><span class="mi">282</span>f<span class="k">}}</span>
+</code></pre></div>
+</div>
+<h2 id="simulate_net">simulate_net</h2>
+<p>Perform SPICE simulation for the specified gatepin net.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">simulate_net</span><span class="w"> </span><span class="o">&lt;</span>driver_gatepin<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="set_spice_simulation_parameters">set_spice_simulation_parameters</h2>
+<p>Specify SPICE simulation time step and total duration.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_spice_simulation_parameters</span><span class="w"> </span><span class="o">-</span>timestep<span class="w"> </span><span class="o">&lt;</span>timestepvalue<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>totalduration<span class="w"> </span><span class="o">&lt;</span>totaldurationvalue<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-timestep</code> is the transient analysis time step value</li>
+<li><code>-totalduration</code> is the total duration value</li>
+</ul>
+<h2 id="create_net_spice_probe">create_net_spice_probe</h2>
+<p>Create a probe for storing SPICE simulation data. Voltage probes are specified at a single node with reference to GND, while current probes are specified at net supplies.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_net_spice_probe</span><span class="w"> </span><span class="o">&lt;</span>drivergatepin<span class="o">&gt;</span><span class="w"> </span><span class="k">(</span><span class="nv">-node</span><span class="w"> </span><span class="o">&lt;</span>spefnodename<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>vnode<span class="w"> </span><span class="o">&lt;</span>voltagesourcename<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="k">)</span><span class="w"> </span><span class="o">?-</span>longest<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>shortest<span class="o">?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-node</code> is the SPEF net node</li>
+<li><code>-vnode</code> is the voltage source name</li>
+<li><code>-all</code> is used to create probes at all nodes</li>
+<li><code>-longest</code> is used for worst case analysis</li>
+<li><code>-shortest</code> is used for best case analysis</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="nv">5</span><span class="o">&gt;</span><span class="w"> </span>create_net_spice_probe<span class="w"> </span>ASU_2bufs<span class="o">/</span>U1<span class="o">/</span>Y<span class="w"> </span><span class="o">-</span>node<span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span>longest
+</code></pre></div>
+</div>
+<h2 id="plot_spice_probe">plot_spice_probe</h2>
+<p>Plot specified probe data. The desired probes are specified by their list index. Use the command <a href="#list_spice_probes">list_spice_probes</a> to print all spice probes and their index.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">plot_spice_probe</span><span class="w"> </span><span class="k">{</span><span class="nv">probelist</span><span class="k">}</span>
+</code></pre></div>
+<h2 id="list_spice_probes">list_spice_probes</h2>
+<p>List all the SPICE probes stored in memory.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_spice_probes</span>
+</code></pre></div>
+<h2 id="perform_exhaustive_set_analysis">perform_exhaustive_SET_analysis</h2>
+<p>Performs exhaustive SET analysis. For each defined particle profile, iterates through all output gatepins and creates an SET scenario for each one. Then, after all scenarios have been created, generation followed by propagation of the SET glitch is performed for each SET scenario.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">perform_exhaustive_SET_analysis</span>
+</code></pre></div>
+<h2 id="perform_set_analysis">perform_SET_analysis</h2>
+<p>Heuristic SET analysis flow. Run the SET analysis for a set of particle profiles and a set of output gatepins. For each given output gatepin a SET scenario will be created for each given particle to perform the SET analysis flow (generation &amp; propagation). This command is an alternative to <a href="#perform_exhaustive_set_analysis">perform_exhaustive_SET_analysis</a> in case the user wants to run the analysis for specific portions of the circuit and particle profiles.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">perform_SET_analysis</span><span class="w"> </span><span class="o">-</span>profiles<span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">profile1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>profile2<span class="o">&gt;</span><span class="w"> </span>...<span class="k">}</span><span class="w"> </span><span class="o">-</span>gatepins<span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">gatepin1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>gatepin2<span class="o">&gt;</span><span class="w"> </span>...<span class="k">}</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-profiles</code> is the list of particle profiles to be used for the SET analysis</li>
+<li><code>-gatepins</code> is the list of output gatepins to be used for the SET analysis</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">perform_SET_analysis</span><span class="w"> </span><span class="o">-</span>profiles<span class="w"> </span><span class="k">{</span><span class="nv">p1</span><span class="w"> </span>p2<span class="w"> </span>p3<span class="k">}</span><span class="w"> </span><span class="o">-</span>gatepins<span class="w"> </span><span class="k">{</span><span class="nv">SET_testcase</span><span class="o">/</span>U1<span class="o">/</span>Q<span class="w"> </span>SET_testcase<span class="o">/</span>U2<span class="o">/</span>Q<span class="w"> </span>SET_testcase<span class="o">/</span>U3<span class="o">/</span>Q<span class="w"> </span>SET_testcase<span class="o">/</span>U4<span class="o">/</span>Q<span class="k">}</span>
+</code></pre></div>
+</div>
+<h2 id="list_gatepins_set_analysis_info">list_gatepins_set_analysis_info</h2>
+<p>List SET analysis information for a specific gatepin.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_gatepins_set_analysis_info</span><span class="w"> </span><span class="o">&lt;</span>gatepin_name<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="list_all_gatepin_set_analysis_info">list_all_gatepin_set_analysis_info</h2>
+<p>List SET analysis information for all gatepins.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_all_gatepin_set_analysis_info</span>
+</code></pre></div>
+<h2 id="report_set_scenario_timingpoints">report_SET_scenario_timingpoints</h2>
+<p>Lists for a specific scenario the timingpoints, i.e., the forward logic cone gatepins that
+have been traversed by the glitch.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">report_SET_scenario_timingpoints</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="report_set_generation_probabilities">report_SET_generation_probabilities</h2>
+<p>Report positive and negative SET generations probabilities for all gatepins.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">report_SET_generation_probabilities</span>
+</code></pre></div>
+<h2 id="eco_swap_component_pins">eco_swap_component_pins</h2>
+<p>Rewire two input pins of a component.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_swap_component_pins</span><span class="w"> </span><span class="o">&lt;</span>component_name<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>pin_name_1<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>pin_name_2<span class="o">&gt;</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;component_name&gt;</code> is the name of the target component to perform rewiring</li>
+<li><code>&lt;pin_name_1&gt;</code> is the name of the first pin to be rewired</li>
+<li><code>&lt;pin_name_2&gt;</code> is the name of the second pin to be rewired</li>
+</ul>
+<h2 id="eco_upsize_component">eco_upsize_component</h2>
+<p>Upsize a component to the immediate larger component.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_upsize_component</span><span class="w"> </span><span class="o">&lt;</span>component_name<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>overlapsmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;component_name&gt;</code> is the name of the target component to upsize</li>
+<li><code>-overlapsmethod</code> is the overlap handling method (optional)<ul>
+<li><code>1</code>: remove from rows and mark as illegal only the overlapping components (default)</li>
+<li><code>2</code>: remove from rows and mark as illegal both the resized and the overlapping components</li>
+<li><code>3</code>: remove from rows and mark as illegal only the resized component</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_downsize_component">eco_downsize_component</h2>
+<p>Downsize a component to the immediate smaller component.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_downsize_component</span><span class="w"> </span><span class="o">&lt;</span>component_name<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>overlapsmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;component_name&gt;</code> is the name of the target component to downsize</li>
+<li><code>-overlapsmethod</code> is the overlap handling method (optional)<ul>
+<li><code>1</code>: remove from rows and mark as illegal only the overlapping components (default)</li>
+<li><code>2</code>: remove from rows and mark as illegal both the resized and the overlapping components</li>
+<li><code>3</code>: remove from rows and mark as illegal only the resized component</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_charge_sharing">eco_charge_sharing</h2>
+<p>Insert charge-sharing logic to a target gatepin.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_charge_sharing</span><span class="w"> </span><span class="o">&lt;</span>target_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>cell<span class="w"> </span><span class="o">&lt;</span>delay_cell<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>num<span class="w"> </span><span class="o">&lt;</span>number_of_delay_cells<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>placementmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Default</span><span class="w"> </span>Placement<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="w"> </span>and<span class="w"> </span>remove<span class="w"> </span>overlapping<span class="w"> </span>components<span class="k">)</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;target_gatepin&gt;</code> is the name of the target gatepin to insert charge-sharing logic</li>
+<li><code>-cell</code> is the name of the delay cell to be used for the charge-sharing logic</li>
+<li><code>-num</code> is the number of delay cells to be used for the charge-sharing logic</li>
+<li><code>-placementmethod</code> is the placement method (optional)<ul>
+<li><code>0</code>: place the new components at (0, 0) (default)</li>
+<li><code>1</code>: place the new components at the centre of mass</li>
+<li><code>2</code>: place the new components at the centre of mass and remove overlapping components</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_fanout_decomposition">eco_fanout_decomposition</h2>
+<p>Perform fan-out decomposition in a target component by performing gate cloning on the target component and splitting the fan-out of the target gatepin.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_fanout_decomposition</span><span class="w"> </span><span class="o">&lt;</span>target_component<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>placementmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Default</span><span class="w"> </span>Placement<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="w"> </span>and<span class="w"> </span>remove<span class="w"> </span>overlapping<span class="w"> </span>components<span class="k">)</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;target_component&gt;</code> is the name of the target component to perform fan-out decomposition</li>
+<li><code>-placementmethod</code> is the placement method (optional)<ul>
+<li><code>0</code>: place the new components at (0, 0) (default)</li>
+<li><code>1</code>: place the new components at the centre of mass</li>
+<li><code>2</code>: place the new components at the centre of mass and remove overlapping components</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_tmr_component">eco_tmr_component</h2>
+<p>Apply Triple Modular Redundancy (TMR) to a target component. The target component is triplicated with the input of each replica being tied together and their outputs connected to a majority voter. As for the majority voter, UPSET uses the NAND based majority voter, which is shown in the <a href="set_optimisation_techniques.html#fig:majority_voter">figure</a>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_tmr_component</span><span class="w"> </span><span class="o">&lt;</span>component_name<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>placementmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Default</span><span class="w"> </span>Placement<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="w"> </span>and<span class="w"> </span>remove<span class="w"> </span>overlapping<span class="w"> </span>components<span class="k">)</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;component_name&gt;</code> is the name of the target component to apply TMR</li>
+<li><code>-placementmethod</code> is the placement method (optional)<ul>
+<li><code>0</code>: place the new components at (0, 0) (default)</li>
+<li><code>1</code>: place the new components at the centre of mass</li>
+<li><code>2</code>: place the new components at the centre of mass and remove overlapping components</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_insert_filter">eco_insert_filter</h2>
+<p>Insert a SET filter to a target gatepin. The SET filter is composed by a guard gate and a delay line.</p>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>The current version of SET filter insertion is supporting the insertion of an AND gate for the voting, instead of a guard gate. However, this is not correct, since the AND gate will result in broadening negative (1-&gt;0-&gt;1) SET pulses instead of attenuating them. Thus, the SET filter insertion should be updated to support the insertion of a guard gate in the next release.</p>
+</div>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_insert_filter</span><span class="w"> </span><span class="o">&lt;</span>target_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>cell<span class="w"> </span><span class="o">&lt;</span>delay_cell<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>num<span class="w"> </span><span class="o">&lt;</span>number_of_delay_cells<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>AND<span class="w"> </span><span class="o">&lt;</span>AND_cell<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>placementmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Default</span><span class="w"> </span>Placement<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="w"> </span>and<span class="w"> </span>remove<span class="w"> </span>overlapping<span class="w"> </span>components<span class="k">)</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;target_gatepin&gt;</code> is the name of the target gatepin to insert a SET filter</li>
+<li><code>-cell</code> is the name of the delay cell to be used for the SET filter</li>
+<li><code>-num</code> is the number of delay cells to be used for the SET filter</li>
+<li><code>-AND</code> is the name of the AND cell to be used for the SET filter</li>
+<li><code>-placementmethod</code> is the placement method (optional)<ul>
+<li><code>0</code>: place the new components at (0, 0) (default)</li>
+<li><code>1</code>: place the new components at the centre of mass</li>
+<li><code>2</code>: place the new components at the centre of mass and remove overlapping components</li>
+</ul>
+</li>
+</ul>
+<h2 id="eco_insert_cascaded_inverter">eco_insert_cascaded_inverter</h2>
+<p>Insert a pair of cascaded inverters to a target gatepin.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">eco_insert_cascaded_inverter</span><span class="w"> </span><span class="o">&lt;</span>target_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>cells<span class="w"> </span><span class="o">&lt;</span>cell<span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>cell<span class="w"> </span><span class="mi">2</span><span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>placementmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Default</span><span class="w"> </span>Placement<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">Place</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span>the<span class="w"> </span>centre-of-mass<span class="w"> </span>and<span class="w"> </span>remove<span class="w"> </span>overlapping<span class="w"> </span>components<span class="k">)</span><span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>&lt;target_gatepin&gt;</code> is the name of the target gatepin to insert a cascaded inverter</li>
+<li><code>-cells</code> is the name of the INV cells to be used for the cascaded inverters</li>
+<li><code>-placementmethod</code> is the placement method (optional)<ul>
+<li><code>0</code>: place the new components at (0, 0) (default)</li>
+<li><code>1</code>: place the new components at the centre of mass</li>
+<li><code>2</code>: place the new components at the centre of mass and remove overlapping components</li>
+</ul>
+</li>
+</ul>
+<h2 id="legalise_components">legalise_components</h2>
+<p>Perform legalisation of the circuit components.</p>
+<p><strong>Syntax:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">legalise_components</span><span class="w"> </span><span class="o">-</span>order<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">all</span><span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">increasing</span><span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">(</span><span class="nv">decreasing</span><span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">(</span><span class="nv">centre-outwards</span><span class="k">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>blockagesmethod<span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="k">(</span><span class="nv">Subrow</span><span class="w"> </span>Assignment<span class="w"> </span><span class="o">-</span><span class="w"> </span>SRA<span class="k">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">(</span><span class="nv">Subrow</span><span class="w"> </span>Reassignment<span class="w"> </span><span class="o">-</span><span class="w"> </span>SRR<span class="k">)</span><span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>timingdriven<span class="w"> </span><span class="o">&lt;</span>longest<span class="w"> </span><span class="o">|</span><span class="w"> </span>shortest<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>htmlreport<span class="w"> </span><span class="o">&lt;</span>filename<span class="o">&gt;?</span>
+</code></pre></div>
+<p><strong>Arguments:</strong></p>
+<ul>
+<li><code>-order</code> is the order of the legalisation<ul>
+<li><code>0</code>: all of the 3 supported orders and choose the best one</li>
+<li><code>1</code>: increasing order of components x-coordinates</li>
+<li><code>2</code>: decreasing order of components x-coordinates</li>
+<li><code>3</code>: centre-outwards order of components x-coordinates</li>
+</ul>
+</li>
+<li><code>-blockagemethod</code> is the blockage method<ul>
+<li><code>0</code>: Subrow Assignment - SRA</li>
+<li><code>1</code>: Subrow Reassignment - SRR</li>
+</ul>
+</li>
+<li><code>-timingdriven</code> is the timing driven analysis (optional)</li>
+<li><code>-htmlreport</code> is the name of the HTML report file to be generated (optional)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="tutorial_flows.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tutorial Flows">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Tutorial Flows
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="reference_card.html" class="md-footer__link md-footer__link--next" aria-label="Next: Reference Card">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Reference Card
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Circuits and Systems Laboratory, University of Thessaly, Greece
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/circuits-and-systems-laboratory-uth" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.path", "navigation.top", "navigation.footer"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

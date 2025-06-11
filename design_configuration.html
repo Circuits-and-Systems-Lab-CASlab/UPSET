@@ -1,0 +1,1347 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="tool_fundamentals.html">
+      
+      
+        <link rel="next" href="set_analysis_flow.html">
+      
+      
+      <link rel="icon" href="assets/UPSET_logo.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Design Configuration - UPSET Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pre-set-analysis-design-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="UPSET Documentation" class="md-header__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UPSET Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="UPSET Documentation" class="md-nav__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    UPSET Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker_setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tool_fundamentals.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tool Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Design Configuration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="design_configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Design Configuration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-import-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Import Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Import Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-lef" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import LEF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import LIB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import Verilog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-spef" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import SPEF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-saif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import SAIF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-tool-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Tool Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Tool Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-timing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select Timing Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-interconnect-timing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select Interconnect Timing Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-set-analysis-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select SET Analysis Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-sdc-constraints-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: SDC Constraints Specification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: SDC Constraints Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Clock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-input-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Input Delay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-output-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Output Delay
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-static-timing-analysis-sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Static Timing Analysis (STA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Static Timing Analysis (STA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sta-timing-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      STA Timing Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wire-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_analysis_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Analysis Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_sensitivity_metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Sensitivity Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_optimisation_techniques.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Mitigation Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="top_level_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top-Level Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Appendices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commands_reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commands Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference_card.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-import-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Import Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Import Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-lef" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import LEF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import LIB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-verilog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import Verilog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-spef" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import SPEF
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-saif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import SAIF
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-tool-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Tool Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Tool Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-timing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select Timing Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-interconnect-timing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select Interconnect Timing Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-set-analysis-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select SET Analysis Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-sdc-constraints-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: SDC Constraints Specification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: SDC Constraints Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Clock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-input-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Input Delay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-output-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Output Delay
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-static-timing-analysis-sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Static Timing Analysis (STA)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 4: Static Timing Analysis (STA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sta-timing-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      STA Timing Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wire-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pre-set-analysis-design-configuration">Pre-SET Analysis Design Configuration</h1>
+<h2 id="step-1-import-design">Step 1: Import Design</h2>
+<h3 id="import-lef">Import LEF</h3>
+<p>The LEF file should include all the technology library cells present in the Verilog netlist, as LEF Macros which describe the physical dimensions for the library components. The LEF file should also include SITE declarations, i.e. placement sites which will subsequently be used to create the standard-cell rows for the placement. Also, multiple LEF files are supported. LEF file is necessary for the SET Analysis flow.</p>
+<p>The LEF file can be loaded either by the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_lef</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">lef_file_</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<p>or using the keystroke <code>Ctrl+L"</code> or using the GUI menu <code>File -&gt; Load LEF Technology File</code>.</p>
+<p><img alt="Load LEF from GUI" src="figures/ASP_load_lef.png" /></p>
+<h3 id="import-lib">Import LIB</h3>
+<p>Liberty (LIB) library file specifies the cells that exist in the library and for each one of them, it defines attributes such as pin names, area, functionality, timing, power, etc. Multiple LIB files can be loaded, one for each operation corner. LIB file is necessary for the SET Analysis flow.</p>
+<p>The LIB file can be loaded either by the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_lib</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">lib_file_</span><span class="o">&gt;</span><span class="k">}</span><span class="w"> </span><span class="o">?-</span>errors<span class="o">?</span>
+</code></pre></div>
+<p>or using the keystroke <code>Ctrl+T"</code> or using the GUI menu <code>File -&gt; Load Timing Library LIB File</code>.</p>
+<p><img alt="Load LIB from GUI" src="figures/ASP_load_lib.png" /></p>
+<h3 id="import-verilog">Import Verilog</h3>
+<p>The Verilog gate-level netlist file describes the circuit connectivity, as well as the module hierarchy. The netlist should be uniquified so that each module instantiation corresponds directly and is 1-1 to a corresponding module declaration. Loading Verilog file is necessary for the SET Analysis flow.</p>
+<p>The Verilog netlist can be loaded either by the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_verilog</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">verilog_file_</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<p>or using the keystroke <code>Ctrl+V"</code> or using the GUI menu <code>File -&gt; Load VERILOG Netlist</code>.</p>
+<p><img alt="Load VERILOG from GUI" src="figures/ASP_load_verilog.png" /></p>
+<h3 id="import-spef">Import SPEF</h3>
+<p>Standard Parasitic Exchange Format (SPEF) is an IEEE standard for representing the parasitic data of the circuit wires, and it used for delay calculation. Non-ideal wires have parasitic resistance and capacitance, while are specified inside the SPEF file. SPEF file is optional for the SET Analysis flow, but it increases its accuracy.</p>
+<p>The SPEF file can be loaded for each analysis mode using TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_spef</span><span class="w"> </span><span class="k">(</span><span class="nv">-longest</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>shortest<span class="k">)</span><span class="w"> </span><span class="o">?-</span>errors<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">spef_file_</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<p>, where the flags <code>-longest</code> and <code>-shortest</code> determine that the SPEF file contains the parasitics extracted for the worst or best case analysis, respectively.</p>
+<h3 id="import-saif">Import SAIF</h3>
+<p>Switching Activity Interchange Format (SAIF) is an IEEE standard developed by Synopsys &copy; for capturing the toggle rate of the signals in the design and analysing its power consumption. The SAIF file is based on static probability and toggle rate:</p>
+<ul>
+<li>Static Probability: Probability that a signal is at a specific logic state. <code>P1</code> is the probability of the signal being at logic-1 and <code>P0</code> is the probability of the signal being at logic-0.</li>
+<li>Toggle Rate: The number of transitions of logic-0 to logic-1 and vice versa of each pin per unit of time.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Terminology</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T0</code></td>
+<td>Duration of time found in logic-0 state</td>
+</tr>
+<tr>
+<td><code>T1</code></td>
+<td>Duration of time found in logic-1 state</td>
+</tr>
+<tr>
+<td><code>TX</code></td>
+<td>During of time found in unknown "X" state</td>
+</tr>
+<tr>
+<td><code>TC</code></td>
+<td>The sum of 0-&gt;1 and 1-&gt;0 transitions captured during monitoring</td>
+</tr>
+<tr>
+<td><code>IG</code></td>
+<td>Number of 0-&gt;X-&gt;0 and 1-&gt;X-&gt;1 glitches captured during monitoring</td>
+</tr>
+<tr>
+<td><code>RISE</code></td>
+<td>Rise transitions in a given state</td>
+</tr>
+<tr>
+<td><code>FALL</code></td>
+<td>Fall transitions in a given state</td>
+</tr>
+</tbody>
+</table>
+<p>The above table lists some of the basic terms used in the SAIF file. From the above list, for the SET propagation, only the <code>T0</code> and <code>T1</code> terms are used. SAIF file is optional for the SET Analysis flow, and it increases the accuracy of the probabilistic SET analysis by providing more accurate static probabilities.</p>
+<p>The SAIF file can be loaded using the TCL command:</p>
+<p><div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_saif</span><span class="w"> </span><span class="o">&lt;</span>saif_file_<span class="o">&gt;</span>
+<span class="c"># or alternatively</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">read_saif</span><span class="w"> </span><span class="o">&lt;</span>saif_file_<span class="o">&gt;</span>
+</code></pre></div>
+The information for each gatepin is stored in memory by the SAIF annotation can be reported by the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_saif_info</span>
+</code></pre></div>
+<h2 id="step-2-tool-configuration">Step 2: Tool Configuration</h2>
+<h3 id="select-timing-model">Select Timing Model</h3>
+<p>UPSET timer supports two industrial models, NLDM and CCS. More details about the supported timing models can be found in section <a href="#sta-timing-models">STA Timing Models</a>. Select the design timing model using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_timing_model</span><span class="w"> </span><span class="o">&lt;</span>nldm<span class="w"> </span><span class="o">|</span><span class="w"> </span>ccs<span class="o">&gt;</span>
+</code></pre></div>
+<h3 id="select-interconnect-timing-model">Select Interconnect Timing Model</h3>
+<p>UPSET timer supports also three industrial models  for the modelling of the interconnect effect to the circuit timing:
+- Lumped RC,
+- Pi-model, and
+- Detailed RC.
+More details about the supported wire models can be found in section <a href="#wire-models">Wire Models</a>. Select the design interconnect timing model using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_timing_RC_mode</span><span class="w"> </span><span class="o">&lt;</span>lumpedRC<span class="w"> </span><span class="o">|</span><span class="w"> </span>pimodelRC<span class="w"> </span><span class="o">|</span><span class="w"> </span>detailedRC<span class="o">&gt;</span>
+</code></pre></div>
+<h3 id="select-set-analysis-mode">Select SET Analysis Mode</h3>
+<p>UPSET SET Analysis tool supports two modes: (i) Vector-based, (ii) Probabilistic. The SET analysis mode can be set using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_analysis_mode</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span>Vector-based<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span>Probabilistic<span class="o">&gt;</span>
+</code></pre></div>
+<h2 id="step-3-sdc-constraints-specification">Step 3: SDC Constraints Specification</h2>
+<h3 id="create-clock">Create Clock</h3>
+<p>Synchronous designs' frequency is dictated by the use of an external clock. The period, name and waveform of this clock are specified using the SDC command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_clock</span><span class="w"> </span><span class="o">&lt;</span>source_gatepin<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>period<span class="w"> </span><span class="o">&lt;</span>period_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>name<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>waveform<span class="w"> </span><span class="k">{</span><span class="nv">edge_list</span><span class="k">}</span><span class="o">?</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;source_gatepin&gt;</code> is the name of the source gate pin of the clock</li>
+<li><code>&lt;period_value&gt;</code> is the period of the clock</li>
+<li><code>&lt;clock_name&gt;</code> is the name of the clock</li>
+<li><code>&lt;edge_list&gt;</code> is the waveform rise and fall edge pairs</li>
+</ul>
+<h3 id="set-input-delay">Set Input Delay</h3>
+<p><img _="," align="right" alt="Set Input Delay" src="figures/input_delay.png" width="400" /></p>
+<p>Input delay is the delay between a hypothetical launching sequential element in the design's environment and the design's top-level inputs. Design inputs are constrained using the SDC command:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">set_input_delay</span><span class="w"> </span><span class="o">&lt;</span>delay_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>clock<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>rise<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>fall<span class="o">?</span><span class="w"> </span><span class="o">?-</span>max<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>min<span class="o">?</span><span class="w"> </span><span class="o">?-</span>add_delay<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="nv">port_pin_list</span><span class="k">}</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;delay_value&gt;</code> is the delay value</li>
+<li><code>&lt;clock_name&gt;</code>specifies the hypothetical launching element clock, and therefore the input delay reference</li>
+<li><code>-rise</code>/<code>-fall</code> specify the delay direction</li>
+<li><code>-max</code> /<code>-min</code> determines the delay analysis type (worst or best case)</li>
+<li><code>-add_delay</code> is used to add the delay in the already stored delay value</li>
+<li><code>{port_pin_list}</code> is the list of input pins to be constrained</li>
+</ul>
+<h3 id="set-output-delay">Set Output Delay</h3>
+<p><img _="," align="right" alt="Set Output Delay" src="figures/output_delay.png" width="400" /></p>
+<p>Output delay is the delay between the specified design's top-level outputs and a hypothetical capturing sequential element in the design's environment. Design outputs are constraints using the SDC command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_output_delay</span><span class="w"> </span><span class="o">&lt;</span>delay_value<span class="o">&gt;</span><span class="w"> </span><span class="o">?-</span>clock<span class="w"> </span><span class="o">&lt;</span>clock_name<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>rise<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>fall<span class="o">?</span><span class="w"> </span><span class="o">?-</span>max<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>min<span class="o">?</span><span class="w"> </span><span class="o">?-</span>add_delay<span class="o">?</span><span class="w"> </span><span class="k">{</span><span class="nv">port_pin_list</span><span class="k">}</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;delay_value&gt;</code> is the delay value</li>
+<li><code>&lt;clock_name&gt;</code>specifies the hypothetical capturing element clock, and therefore the output required arrival time</li>
+<li><code>-rise</code>/<code>-fall</code> specify the delay direction</li>
+<li><code>-max</code> /<code>-min</code> determines the delay analysis type (worst or best case)</li>
+<li><code>-add_delay</code> is used to add the delay in the already stored delay value</li>
+<li><code>{port_pin_list}</code> is the list of output pins to be constrained</li>
+</ul>
+<h2 id="step-4-static-timing-analysis-sta">Step 4: Static Timing Analysis (STA)</h2>
+<p>Timing analysis is performed to guarantee worst-case or best-case timing is met, based on the specified SDC constraints. To perform STA, use the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">report_timing</span><span class="w"> </span><span class="o">?-</span>longest<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>shortest<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span><span class="w"> </span><span class="o">?-</span>backannotate<span class="o">?</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>-longest</code> and <code>-shortest</code> is used to determine the delay analysis type (worst or best case)</li>
+<li><code>-corner</code> is used to select the library corner to be used for the STA timing analysis</li>
+<li><code>-backannotate</code> is used to perform slack annotation for all the circuit gatepins.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For performance reasons, slack is checked only at the timing paths endpoints. Use argument <code>-backannotate</code> to calculate global slack.</p>
+</div>
+<p>The default command arguments are:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">report_timing</span><span class="w"> </span><span class="o">-</span>longest<span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="mi">0</span>
+</code></pre></div>
+<h3 id="sta-timing-models">STA Timing Models</h3>
+<p>Timing models are framework to accurately predict and analyse, under different conditions, how signals are transformed when they are propagated through the transistor inside the physical layout of each logic gate of a technology. More specifically, these models provide an estimation of the delay and slew at the output pin of the gate. Notably, this estimation is directly related with the signal transition at the related input pins and the load the output pin drives.</p>
+<p>Various timing models have been proposed in the literature. However, in recent times, the Non-Linear Delay Model (NLDM) and the Composite Current Source (CCS) have emerged as the industry standards.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Non-Linear Delay Model (NLDM)</label><label for="__tabbed_1_2">Composite Current Source (CCS)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>The Non-Linear Delay Model (NLDM) is a widely used timing model in digital circuit design that provides a detailed representation of the delay and transition characteristics of the logic gates.  NLDM relies on 2D lookup tables (LUTs) to store the delay and output transition times for different combinations of input transition times and output load capacitances. These tables are generated through detailed characterisation of each logic gate under various conditions. This methods provides a significant improvement in accuracy over linear models, as it accounts the complex non-linear behavior observed in real circuits.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Below is an example of NLDM LUTs for an output pin <code>OUT</code>. More specifically, it presents the rise delay and rise transition of the timing arc from input pin <code>INP1</code> to output pin OUT. The arc is negative unate meaning that for a rise to occur in the output, the signal at input pin INP1 must be falling. The indices from input transition times (<code>index_1</code>) and output capacitances (<code>index_2</code>) specify the values along the two dimensions of the table: input transitions (0.1, 0.3, 0.7) and output loads (0.16, 0.35, 1.43). The <code>values</code> block then provides the corresponding delay times for each combination of these indices in a matrix format. For example, in the <code>cell_rise</code> table, the delay for an input transition time of 0.3 and an output capacitance of 0.35 is found by location the second row and second column in the <code>values</code> matrix, yielding 0.2327. This method allows for precise interpolation of delay times based on given input and output conditions.</p>
+<div class="highlight"><pre><span></span><code>pin (OUT) {
+    max_transition : 1.0;
+    timing() {
+        related_pin : &quot;INP1&quot;;
+        timing_sense : negative_unate;
+        cell_rise(delay_template_3x3) {
+            index_1 (&quot;0.1, 0.3, 0.7&quot;); /* Input transition */
+            index_2 (&quot;0.16, 0.35, 1.43&quot;); /* Output capacitance */
+            values ( /* 0.16       0.35        1.43 */
+            /* 0.1 */ &quot;0.0513,    0.1537,    0.5280&quot;,
+            /* 0.3 */ &quot;0.1018,    0.2327,    0.6476&quot;,
+            /* 0.7 */ &quot;0.1334,    0.2973,    0.7252&quot;);
+        }
+        rise_transition(delay_template_3x3) {
+            index_1 (&quot;0.1, 0.3, 0.7&quot;); /* Input transition */
+            index_2 (&quot;0.16, 0.35, 1.43&quot;); /* Output capacitance */
+            values ( /* 0.16       0.35        1.43 */
+            /* 0.1 */ &quot;0.0417,    0.1337,    0.4680&quot;,
+            /* 0.3 */ &quot;0.0718,    0.1827,    0.5676&quot;,
+            /* 0.7 */ &quot;0.1034,    0.2173,    0.6452&quot;);
+        }
+    }
+}
+</code></pre></div>
+</div>
+<p>One of the key benefits of using NLDM is its balance between accuracy and computational efficiency. While it offers a detailed representation of the timing behavior, it does so with a manageable amount of data, making it suitable for use in large-scale digital designs. The interpolation approach used by NLDM ensures that the timing analysis remains efficient, which is particularly important in modern design flows.</p>
+<p>However, the accuracy of NLDM is limited by its reliance on pre-characterised data and interpolation. As process technologies advance to smaller nodes, additional factors such as complex waveform shapes and parasitic effects become more significant. Despite these limitations, NLDM remains a fundamental tool in the timing analysis of digital circuits, offering a practical and effective means of ensuring reliable circuit performance.</p>
+</div>
+<div class="tabbed-block">
+<p>The Composite Current Source (CCS) model is an advanced timing and noise modeling approach used in digital circuit design to achieve high accuracy in the timing and reliability analysis of logic cells. Unlike traditional models that primarily focus on voltage-based delay and transition times, CCS models the current behavior of a logic cell. By treating the cell as a current source, CCS captures the detailed shape of the current waveforms, which allows for more precise predictions of delays and signal integrity under various conditions. This is especially crucial for advanced process nodes.</p>
+<p>The CCS model is divided into two main components:
+- CCS Timing: Focuses on the accurate prediction of delay and transition times by considering the current profile profiles of the cell. This involves detailed characterisation of the cell's response to different input transitions and  output loading conditions.
+- CCS Noise: Deals with the way noise propagates through the circuit and affects signal integrity. By modeling the noise as a function of current waveforms, the CSS Noise component provides insights into how susceptible a circuit is to various noise sources, which is essential for ensuring robust operation in noisy environments.</p>
+<p>A significant advantage of the CCS model is its ability to provide accurate timing analysis in the presence of complex interconnect effects and noise phenomena. It captures the impact of input slew rates, output loads and power supply variations on the cell's timing behavior by representing the current flow during switching events. The level of detail helps in predicting how the logic cells will interact with each other in a real beneficial for deep sub-micron technologies, where traditional models might fall short in capturing all relevant effects.</p>
+<p>Implementing CCS  in STA tool involves using current waveform tables similar to NLDM using delay tables. These tables provide a rich set of data that allows for interpolation based on actual operation conditions. The current profiles are used to simulate the behavior of the cells more accurately than voltage-based models. While this approach increases the complexity and computational requirements of the analysis, it significantly enhances the accuracy of timing predictions and noise analysis.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Below is presented an example of CCS lookup table for an output pin OUT. Similarly to NLDM LUTs, CCS LUTs are organised in timing arcs. Here, instead of rise/fall delay and transition tables, the output charging current is provided in the form of a waveform. Attributes <code>index_1</code> and <code>index_2</code> refer to the input transition and output capacitance, respectively. <code>reference_time</code> indicates the time when the input waveform cross the delay threshold voltage. The current waveform is given by <code>index_3</code> and <code>values</code> attributes, where <code>index_3</code> corresponds to the time point of the waveform and <code>values</code> to the output current at each tome point. For example, at a time of 5.079e+00 relative to the reference time, the output charging current is -5.784e-02.</p>
+<div class="highlight"><pre><span></span><code>pin (OUT) {
+    timing () {
+        related_pin : &quot;IN&quot;-;
+        ...
+        output_current_fall () {
+            vector (&quot;LOOKUP_TABLE_1x1x5&quot;) {
+                reference_time : 5.06; /* Time of input crossing threshold */
+                index_1(&quot;0.040&quot;); /* Input transition */
+                index_2(&quot;0.900&quot;); /* Output capacitance */
+                index_3(&quot;5.079e+00, 5.093e+00, 5.152e+00,
+                        5.170e+00, 5.352e+00&quot;); /* Time values */
+                /* Output charging current: */
+                values(&quot;-5.784e-02, -5.980e-02, -5.417e-02,
+                        -4.257e-02, -2.184e-03&quot;);
+            }
+        }
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="wire-models">Wire Models</h3>
+<p>In advanced technology nodes, interconnect parasitics play a critical role in determining the performance, power and reliability of the circuits. As device geometries shrink, and operating frequencies increase, the resistance and capacitance of interconnects become more noticeable, affecting the overall signal propagation time. Hence, accurate wire delay estimation is crucial in modern STA engines because it ensures that the timing analysis reflects realistic conditions, allowing designers to identify and mitigate potential timing violations that could lead to functional failures.</p>
+<p>Several wire models have been proposed in the literature aiming to estimate wire delay, each varying in complexity and precision. Below are described the wire delay estimation models that are adopted by the UPSET STA engine.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Lumped RC</label><label for="__tabbed_2_2">Pi-Model RC</label><label for="__tabbed_2_3">Detailed RC</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img _="," align="right" alt="Lumped RC" src="figures/lumped_RC.png" width="300" /></p>
+<p>The Lumped RC model is the simplest form of wire delay estimation. In this model, the entire resistance (R) and capacitance (C) of an interconnect segment are lumped into a single resistor and capacitor, as shown in the next figure. This model is computationally efficient and provides a quick estimation of delay. However, it is often overly simplistic for complex designs, as it does not account for the distributed nature of resistance and capacitance along the wire. The Lumped RC model is most useful for initial approximations and in scenarios where the interconnect lengths are relatively short, and the distribution effects are minimal.</p>
+</div>
+<div class="tabbed-block">
+<p><img _="," align="right" alt="Pi-Model RC" src="figures/pi_model.png" width="300" /></p>
+<p>The Pi model offers a more refined approach compared to the Lumped RC model by diving the wire's capacitance into two segments, one at each end of the resistor, as shown in the next figure. This division allows for a more accurate representation of the wire's electrical behavior, particulaly for medium-length interconnects. The Pi model captures the effect of the distributed capacitance between than the Lumped RC model, providing a more precise delay estimation while still maintaining relatively low computational efficiency, making it a popular choice in STA tools for intermediate-level analysis.</p>
+</div>
+<div class="tabbed-block">
+<p>The Detailed, or distributed RC, model is the most accurate method for wire delay estimation. This model treats the interconnect as a series of small segments, each with its own resistance and capacitance, as shown in the next figure. The delay is calculated by integrating the effects of these small segments along the entire length of the wire. This approach captures the distributed nature of interconnect's electrical properties, providing a highly precise delay estimation. However, it is computationally intensive, requiring sophisticated algorithms and significant processing power. It is typically used in the final design stages or for critical paths where high accuracy is necessary.</p>
+<p><img align="center" alt="Detailed RC" src="figures/detailed_RC.png" /></p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="tool_fundamentals.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tool Fundamentals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Tool Fundamentals
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="set_analysis_flow.html" class="md-footer__link md-footer__link--next" aria-label="Next: SET Analysis Flow">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                SET Analysis Flow
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Circuits and Systems Laboratory, University of Thessaly, Greece
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/circuits-and-systems-laboratory-uth" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.path", "navigation.top", "navigation.footer"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

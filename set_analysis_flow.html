@@ -1,0 +1,1871 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="design_configuration.html">
+      
+      
+        <link rel="next" href="set_sensitivity_metrics.html">
+      
+      
+      <link rel="icon" href="assets/UPSET_logo.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>SET Analysis Flow - UPSET Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRed+Hat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Red Hat Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/custom.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#upset-set-analysis-flow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="UPSET Documentation" class="md-header__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            UPSET Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SET Analysis Flow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="UPSET Documentation" class="md-nav__button md-logo" aria-label="UPSET Documentation" data-md-component="logo">
+      
+  <img src="assets/UPSET_logo.ico" alt="logo">
+
+    </a>
+    UPSET Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Circuits-and-Systems-Lab-CASlab/UPSET
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docker_setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tool_fundamentals.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tool Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="design_configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Design Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    SET Analysis Flow
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="set_analysis_flow.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Analysis Flow
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#particle-profile-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Profile Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-scenarios-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Scenarios Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#circuit-state-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit State Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-glitch-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Glitch Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Glitch Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-generation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Generation Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glitch-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glitch Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-custom-voltage-glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading Custom Voltage Glitch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-glitch-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Glitch Propagation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Glitch Propagation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-propagation-sta-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Propagation STA-modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Propagation STA-modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vanilla-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Vanilla" STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masking-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Masking Mechanisms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Masking Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Masking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#electrical-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electrical Masking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-window-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timing-Window Masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-probabilities-computation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probabilities Computation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Probabilities Computation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-set-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial SET Probability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-reconvergence-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Reconvergence Case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconvergence-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reconvergence Case
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reconvergence Case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-vanilla-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in "Vanilla" STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-detailed-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in Detailed TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-bounded-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in Bounded TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-timing-window-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probabilistic Timing-Window Masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_sensitivity_metrics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Sensitivity Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="set_optimisation_techniques.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SET Mitigation Techniques
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="top_level_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Top-Level Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Appendices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_flows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tutorial Flows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commands_reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Commands Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference_card.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reference Card
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#particle-profile-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Profile Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-scenarios-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Scenarios Definition
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#circuit-state-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Circuit State Definition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-glitch-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Glitch Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Glitch Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-generation-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Generation Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glitch-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glitch Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-custom-voltage-glitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading Custom Voltage Glitch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-glitch-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Glitch Propagation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Glitch Propagation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-propagation-sta-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Propagation STA-modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Propagation STA-modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vanilla-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Vanilla" STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masking-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Masking Mechanisms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Masking Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logical-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical Masking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#electrical-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Electrical Masking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing-window-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timing-Window Masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-probabilities-computation" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probabilities Computation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SET Probabilities Computation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-set-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial SET Probability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-reconvergence-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Reconvergence Case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reconvergence-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reconvergence Case
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reconvergence Case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-vanilla-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in "Vanilla" STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-detailed-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in Detailed TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-probability-computation-in-bounded-timestamp-based-sta-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      SET Probability Computation in Bounded TimeStamp-based STA-mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probabilistic-timing-window-masking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probabilistic Timing-Window Masking
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="upset-set-analysis-flow">UPSET SET Analysis Flow</h1>
+<p>The UPSET SET Analysis Flow is shown below.</p>
+<figure id="fig:upset_set_analysis_flow">
+<p><img alt="UPSET SET Analysis Flow" src="figures/upset_top_level_flow.png" />
+  </p>
+<figcaption>UPSET SET Analysis Flow</figcaption>
+</figure>
+<h2 id="particle-profile-definition">Particle Profile Definition</h2>
+<p>A particle strike is simulated by default by the Double Exponential (DEXP) current source model which requires the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tdelay</code></td>
+<td>the delay till the start of the current pulse waveform</td>
+</tr>
+<tr>
+<td><code>tau1</code></td>
+<td>the rise time of the pulse waveform</td>
+</tr>
+<tr>
+<td><code>tau2</code></td>
+<td>the fall time of the pulse waveform</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>the collected charge which is relevant to the peak current of the pulse waveform</td>
+</tr>
+</tbody>
+</table>
+<p>The aforementioned parameters describe the characteristics of the particle strike and define a <strong>particle profile</strong>. A particle profile can be defined using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_particle_profile</span><span class="w"> </span><span class="o">-</span>name<span class="w"> </span><span class="o">&lt;</span>profile_name<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tdelay<span class="w"> </span><span class="o">&lt;</span>tdelay_value<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tau1<span class="w"> </span><span class="o">&lt;</span>tau1_value<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>tau2<span class="w"> </span><span class="o">&lt;</span>tau2_value<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>q<span class="w"> </span><span class="o">&lt;</span>q_value<span class="o">&gt;</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;profile_name&gt;</code> is the name of the particle profile</li>
+<li><code>&lt;tdelay_value&gt;</code> is the delay till the start of the current pulse waveform</li>
+<li><code>&lt;tau1_value&gt;</code> is the rise time of the pulse waveform</li>
+<li><code>&lt;tau2_value&gt;</code> is the fall time of the pulse waveform</li>
+<li><code>&lt;q_value&gt;</code> is the collected charge which is relevant to the peak current of the pulse waveform</li>
+</ul>
+<p>The defined particle profiles can be reported using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_particle_profiles</span>
+</code></pre></div>
+<p>The specified particle profile(s) can be cleared from the memory using the TCL commands:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Delete a single particle profile</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">delete_particle_profile</span><span class="w"> </span><span class="o">&lt;</span>profile_name<span class="o">&gt;</span>
+<span class="c"># Delete all the defined particle profiles</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_particle_profiles_info</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>When deleting a particle profile, the associated SET scenarios are also deleted.</p>
+</div>
+<h2 id="set-scenarios-definition">SET Scenarios Definition</h2>
+<p>The defined particle profiles can be used to define a <strong>SET scenario</strong>. A particle profile combined with a driver pin (and optionally an endpoint) defines a SET scenario. However, instead of a particle profile, the user can specify right away the parameters of the DEXP current source. In that case a new particle profile with these parameters is defined automatically.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case a particle profile with the same DEXP parameters is already defined, then the existing particle profile is associated with the defined SET scenario.</p>
+</div>
+<p>Defining a scenario in memory can be done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_SET_scenario</span><span class="w"> </span><span class="o">&lt;</span>driver_pin<span class="o">&gt;</span><span class="w"> </span><span class="o">?&lt;</span>endpoint<span class="o">&gt;?</span><span class="w"> </span><span class="o">-</span>profile<span class="w"> </span><span class="k">(</span><span class="o">&lt;</span><span class="nv">particle_profile_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">&lt;</span>tdelay<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>tau1<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>tau2<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>q<span class="o">&gt;</span><span class="k">)</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;driver_pin&gt;</code> is the name of the driver pin</li>
+<li><code>&lt;endpoint&gt;</code> is the name of the endpoint pin (for which information is stored)</li>
+<li><code>&lt;particle_profile_name&gt;</code> is the name of the particle profile</li>
+<li><code>&lt;tdelay&gt;</code> is the delay till the start of the current pulse waveform</li>
+<li><code>&lt;tau1&gt;</code> is the rise time of the pulse waveform</li>
+<li><code>&lt;tau2&gt;</code> is the fall time of the pulse waveform</li>
+<li><code>&lt;q&gt;</code> is the collected charge which is relevant to the peak current of the pulse waveform</li>
+</ul>
+<p>To load many scenarios at once, a scenario file can be used which contains the designs number of SET scenarios.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Scenario file example:</p>
+<div class="highlight"><pre><span></span><code>module1/reg1/Q module1/reg2/D 0.5n 54p 391p 342f
+module2/reg1/Q module2/reg2/D 0.5n 56p 377p 367f
+</code></pre></div>
+</div>
+<p>Loading a scenario file can be done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">load_SET_scenarios</span><span class="w"> </span><span class="o">&lt;</span>scenario_file<span class="o">&gt;</span>
+</code></pre></div>
+<p>For a more accurate SET generation the Bias Dependent (BIAS) model can be used. More details about the supported models can be found in section <a href="#set-glitch-generation">SET Glitch Generation</a>.</p>
+<p>The information stored for the defined SET scenarios can be reported by the TCL commands:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Report for a Single SET Scenario</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenario</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span>
+<span class="c"># Report for all defined SET Scenarios</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenarios</span>
+</code></pre></div>
+<p>The defined SET scenarios can be cleared from the memory using the TCL commands:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Delete a single SET scenario</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_SET_scenario</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span>
+<span class="c"># Delete all the defined SET scenarios</span>
+<span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_SET_scenarios</span>
+</code></pre></div>
+<h2 id="set-analysis">SET Analysis</h2>
+<p>UPSET's SET analysis flow performs SET generation and propagation for the defined SET scenarios, considering also the analysis mode and the state of the circuit, specified by the user.</p>
+<h3 id="circuit-state-definition">Circuit State Definition</h3>
+<p>UPSET supports two SET Analysis modes : (i) Vector-based, and (ii) Probabilistic (see also <a href="design_configuration.html#select-set-analysis-mode">Select SET Analysis Mode</a> section). In Vector-based SET Analysis, the state of the circuit can be defined creating <strong>SET Case Analysis</strong>, specifying values to circuit gatepins. In contrast, performing Probabilistic SET Analysis, the circuit ste is defined by annotating its gatepins with their <strong>static probabilities</strong>, i.e. probabilities for each circuit node being at logic-0 and logic-1 value.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">SET Case Analysis</label><label for="__tabbed_1_2">Static Probabilities Annotation</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>By creating a SET case analysis the user defines the values for the gates' side inputs. This is supported only when SET scenarios are stored in memory and can be created using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">create_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span>boolean<span class="w"> </span>constant<span class="w"> </span>value<span class="o">&gt;</span><span class="w"> </span><span class="k">{</span><span class="o">&lt;</span><span class="nv">gatepins</span><span class="o">&gt;</span><span class="k">}</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;scenario_index&gt;</code> is the index of the SET scenario</li>
+<li><code>&lt;boolean constant value&gt;</code> is the value to be assigned to the gatepins</li>
+<li><code>{&lt;gatepins&gt;}</code> is the list of gatepins to be assigned the value</li>
+</ul>
+<p>The information of the case analyses created for a specified SET scenarios or all the SET scenarios stored in memory can be listed by the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;scenario_index&gt;</code> is the index of the SET scenario</li>
+</ul>
+<p>, while the case analysis created for a single SET scenario or all the SET scenarios can be cleared using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">clear_SET_scenario_case_analysis</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Vector-based SET analysis mode is not supported in the automated SET analysis flows presented in this document, probabilistic one was recommended. This can be supported in a future release upon request.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Alternatively to creating a case analysis for each SET scenario, the current state of the circuit be be defined by the static probabilities for each circuit pin. A static probability for a pin <code>i</code> (<span class="arithmatex">\(P_i\)</span>) is the probability of the pin being at the logic-1 state. The static probabilities for circuit pins can be annotated either by loading a SAIF file (as shown in section <a href="design_configuration.html#import-saif">Import SAIF</a> section) or by using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_static_probability</span><span class="w"> </span><span class="o">-</span>value<span class="w"> </span><span class="o">&lt;</span>probability_value<span class="o">&gt;</span><span class="w"> </span><span class="k">(</span><span class="nv">-gatepin</span><span class="w"> </span><span class="o">&lt;</span>gatepin_name<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>startpoints<span class="k">)</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;probability_value&gt;</code> is the static probability value</li>
+<li><code>-gatepin &lt;gatepin_name&gt;</code> is the name of the gatepin for which the probability is to be set</li>
+<li><code>-all</code> is used to annotate all the circuit gatepins with the given static probability</li>
+<li><code>-startpoints</code> is used to annotate only the start points, i.e. Primary Inputs (PIs) and sequential elements output pins, of the circuit with the given static probability</li>
+</ul>
+<p>However, in case of Probabilistic SET analysis all the circuit gatepins must be annotated with a static probability. Thus, based on the annotated probabilities, the probabilities for the gatepins of the forward logic cone are computed using <strong>0-Algorithm</strong>, as it was described by Parker nad McCluskey.</p>
+<p>The computation of static probabilities for the non-annotated gatepins can be done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">list_static_probabilities</span><span class="w"> </span><span class="o">-</span>significant_digits<span class="w"> </span><span class="o">&lt;</span>significant_digits<span class="o">&gt;</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For the static probabilities computation, it is required all the starting points of the circuit to be annotated with a static probability. In case a starting point is not annotated, a static probability of 50% is assigned to it.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Logic Gate</th>
+<th>Probability Equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AND2</td>
+<td><span class="arithmatex">\(P_{out} = P_a * P_b\)</span></td>
+</tr>
+<tr>
+<td>OR2</td>
+<td><span class="arithmatex">\(P_{out} = P_a + (1 - P_a) * P_b\)</span></td>
+</tr>
+<tr>
+<td>NAND2</td>
+<td><span class="arithmatex">\(P_{out} = (1 - P_a) + P_a * (1 - P_b)\)</span></td>
+</tr>
+<tr>
+<td>NOR2</td>
+<td><span class="arithmatex">\(P_{out} = (1 - P_a) * (1 - P_b)\)</span></td>
+</tr>
+<tr>
+<td>XOR2</td>
+<td><span class="arithmatex">\(P_{out} = (1 - P_a) * P_b + P_a * (1 - P_b)\)</span></td>
+</tr>
+<tr>
+<td>XNOR2</td>
+<td><span class="arithmatex">\(P_{out} = (1 - P_a) * (1 - P_b) + P_a * P_b\)</span></td>
+</tr>
+<tr>
+<td>INV</td>
+<td><span class="arithmatex">\(P_{out} = 1 - P_{a}\)</span></td>
+</tr>
+<tr>
+<td>BUF</td>
+<td><span class="arithmatex">\(P_{out} = P_{a}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The reset of static probabilities to 0 for the annotated gatepins (either by SAIF or by user-defined annotation) is done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">reset_static_probabilities</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="set-glitch-generation">SET Glitch Generation</h3>
+<h4 id="set-generation-models">SET Generation Models</h4>
+<p>As mentioned in the <a href="#particle-profile-definition">Particle Profile Definition</a> section, two SET Generation models can be used, either the Double Exponential (DEXP) model or the Bias Dependent (BIAS) model.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Double Exponential (DEXP) Current Source Model</label><label for="__tabbed_2_2">Bias Dependent (BIAS) Current Source Model</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>The Double Exponential is the default mode to model a particle strike. It simulates the strike as a current insertion through an independent current source, <code>ISET</code>, and generates a SET current pulse as shown in the figure below. However, if the generated current exceeds the driving current of the restoring transistor, the form of the current pulse may diverge from the shown double-exponential one (in case of a high LET particle strike). As a result, the typical DEXP current model cannot reproduce the the SET current pulse in case of a high LET particle strike, resulting in a voltage overshoot beyond the power supply.</p>
+<p><img align="left," alt="Double Exponential model" src="figures/DoubleExponential.png" width="400" />
+<img align="right," alt="DEXP Waveform" src="figures/Double_Exponential_Current_Waveform.png" width="400" /></p>
+</div>
+<div class="tabbed-block">
+<p>In case of a high LET particle strike, the generated current exceeds the driving current of the restoring transistor, and thus the form of the current pulse may diverge from the double-exponential one. As shown in figure below, the generated current pulse will have a short spike followed by a long plateau zone. The amplitude of the plateau is equal to the driving current of the restoring transistor, while the duration of the plateau increases with teh particle LET.</p>
+<p>The Bias Dependent model can manage the voltage overshoot effect, observed in the Double Exponential model. As illustrated in the figure below, this model implementation comprises a capacitor <code>Cs</code>, one independent current source <code>ISET</code>, and two voltage-dependent current sources, <code>GREC</code> and <code>GSEE</code>. The <code>ISET</code> is the typical DEXP current source, while the <code>GREC</code> and <code>GSEE</code> current sources are related to the recombination process and the node voltage variation due to the particle charge. The capacitor <code>Cs</code> stores the charge which is equivalent to the SET-induced charge. <code>GSEE'</code> is 1-1 with <code>GSEE</code> and is connected to driver gatepin's spefnet. Bias-dependent auxiliary net is detached from the driver gatepin's spefnet to avoid external influences that may lead to erroneous charge collection as <code>Cs</code>. <code>GREC</code> is related to the <code>Recombination Current</code> parameter. <code>GSEE</code> is dependent on <code>Cs</code> voltage and on the driver's node voltage, through the following equation:</p>
+<div class="arithmatex">\[
+\begin{align}
+GSEE &amp;= (V(Cs)/tau1) \times (1.0/(1.0 + exp((V(driver) + 3\times F)/F))) \\
+\end{align}
+\]</div>
+<p><img align="right," alt="Bias Dependent model" src="figures/BiasDependent.png" width="400" />
+<img align="right," alt="Bias Waveform" src="figures/SET_plateau.png" width="400" /></p>
+</div>
+</div>
+</div>
+<h4 id="glitch-generation">Glitch Generation</h4>
+<p>The SET generation model and BIAS model parameters (<code>Cs</code>,<code>Recombination Current</code>, and <code>Fermi</code>) can be specified using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_generation_parameters</span><span class="w"> </span><span class="o">-</span>model<span class="w"> </span><span class="o">&lt;</span>DEXP<span class="w"> </span><span class="o">|</span><span class="w"> </span>BIAS<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>biascapacitance<span class="w"> </span><span class="o">&lt;</span>BIAS<span class="w"> </span>capacitance<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>recomb<span class="w"> </span><span class="o">&lt;</span>recombination<span class="w"> </span>current<span class="o">&gt;</span><span class="w"> </span><span class="o">-</span>fermi<span class="w"> </span><span class="o">&lt;</span>fermi<span class="w"> </span>constant<span class="o">&gt;</span>
+</code></pre></div>
+<p>Upon creation of SET scenarios, the SET glitch can be generated for a scenario stored in memory or for all the defined SET scenarios. This can be done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_glitch</span><span class="w"> </span><span class="k">(</span><span class="nv">-scenario</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="k">)</span><span class="w"> </span><span class="o">?-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>-scenario &lt;scenario_index&gt;</code> is the index of the SET scenario for which the SET glitch is to be generated</li>
+<li><code>-all</code> is used to generate the SET glitch for all the defined SET scenarios</li>
+<li><code>-corner &lt;corner_index&gt;</code> is the index of the library corner to be used for the SET glitch generation</li>
+</ul>
+<h4 id="loading-custom-voltage-glitch">Loading Custom Voltage Glitch</h4>
+<p>Alternative to performing SET generation, UPSET allows the user to perform SET generation in another tool (like SPICE) and store the generated voltage waveforms into a SET scenario. This can be done using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">generate_SET_scenario_custom_glitch</span><span class="w"> </span><span class="o">-</span>scenario<span class="w"> </span><span class="o">&lt;</span>receivergatepin<span class="o">&gt;</span><span class="w"> </span><span class="k">{</span><span class="nv">t0</span><span class="w"> </span>v0<span class="w"> </span>t1<span class="w"> </span>v1<span class="w"> </span>...<span class="w"> </span>tn<span class="w"> </span>vn<span class="k">}</span><span class="w"> </span><span class="o">-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;receivergatepin&gt;</code> is the name of the receiver gate pin</li>
+<li><code>{t0 v0 t1 v1 ... tn vn}</code> is the list of the voltage waveform timepoints and values.</li>
+</ul>
+<h3 id="set-glitch-propagation">SET Glitch Propagation</h3>
+<p>After the SET glitch generation at the output gatepin of the driver gate, the SET glitches are stored at the connected input gatepins of the receiver gates. The generated SET glitches need to be propagated to the forward logic cone  until they reach the end points, i.e. primary outputs or sequential elements inputs, or become masked either by logical or electrical masking.</p>
+<figure>
+<p><img alt="SET Glitch Propagation" src="figures/set_generation_and_propagation.png" /></p>
+<figcaption>
+<p>Propagation of the generated SETs to the forward logic cone</p>
+</figcaption>
+</figure>
+<p>After SET scenarios have been loaded in memory (check <a href="commands_reference.html#create_set_scenario">create_SET_scenario</a> and <a href="commands_reference.html#load_set_scenarios">load_SET_scenarios</a> commands), and SET glitch generation has been performed for a specific scenario or for all of them (check <a href="commands_reference.html#generate_set_glitch">generate_SET_glitch</a> command), then SET propagation can be performed for the scenario that SET generation has been performed or for all of them, using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">propagate_SET_scenario_glitch</span><span class="w"> </span><span class="k">(</span><span class="nv">-scenario</span><span class="w"> </span><span class="o">&lt;</span>scenario_index<span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">-</span>all<span class="k">)</span><span class="w"> </span><span class="o">?-</span>corner<span class="w"> </span><span class="o">&lt;</span>corner_index<span class="o">&gt;?</span>
+</code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>-scenario &lt;scenario_index&gt;</code> is the index of the SET scenario for which the SET glitch propagation is to be performed</li>
+<li><code>-all</code> is used to propagate the SET glitch for all the defined SET scenarios</li>
+<li><code>-corner &lt;corner_index&gt;</code> is the index of the library corner to be used for the SET glitch propagation</li>
+</ul>
+<h4 id="set-propagation-sta-modes">SET Propagation STA-modes</h4>
+<figure class="inline">
+<p><img alt="SET Pulse Decomposition" src="figures/set_pulse_rise_fall_arrival_slew.png" />
+  </p>
+<figcaption>SET pulse decomposition to its rise and fall arrival times and slews</figcaption>
+</figure>
+<p>A SET glitch in UPSET is characterised by the arrival time and the slew of its rise and fall edge, as shown in the next . Thus, during the SET glitch propagation, the rise and fall arrival times and slews, stored at the receivers' input gatepins are propagated to the forward logic cone by UPSET's STA engine. UPSET SET propagation supports three STA-modes: (i) <em>"Vanilla"</em> STA-mode, (ii) <em>Detailed TimeStamp-based</em> STA-mode, and (iii) <em>Probabilistic</em> STA-mode.</p>
+<p>The SET propagation STA-mode can be set using the TCL command:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%&gt;</span><span class="w"> </span><span class="nv">set_SET_glitch_propagation_mode</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">:</span><span class="w"> </span>Vanilla<span class="w"> </span>STA-mode<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span>Detailed<span class="w"> </span>TimeStamp-based<span class="w"> </span>STA-mode<span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span>Bounded<span class="w"> </span>TimeStamp-based<span class="w"> </span>STA-mode<span class="o">&gt;</span>
+</code></pre></div>
+<h5 id="vanilla-sta-mode">"Vanilla" STA-mode</h5>
+<p>The "Vanilla" STA-mode performs MAX analysis without considering the gates' Boolean function. In more detail, after the generation of a SET pulse at the struct gate, the SET pulse will propagate to the forward logic cone, traversing unate (positive or negative) gate and/or binate gates.</p>
+<p>As for the unate gates, if the side inputs are not at a controlling logic value, the SET pulse will be propagated to the gate's output pin. The direction of the output SET pulse depends on the direction of the input SET pulse and the unateness of the gate, as shown in the <a href="#tab:unate_gates">figure</a> below. In case the side input is at the controlling logic value, then the SET pulse is logically masked, and its propagation to the forward logic cone is stopped.</p>
+<table id="tab:unate_gates">
+<caption><strong>SET Propagation through unate gates</strong></caption>
+<thead>
+<tr>
+<td style="text-align: center;"><img alt="" src="figures/SET_Propagation_Unate_Gate.png"><br>SET Propagation through a positive unate gate</td>
+<td style="text-align: center;"><img alt="" src="figures/SET_Propagation_NAND.png"><br>SET Propagation through a negative unate gate</td>
+</tr>
+</thead>
+</table>
+
+<figure class="inline end" id="fig:binate_gate">
+<p><img alt="SET Binate" src="figures/SET_Propagation_Binate_Gate.png" /></p>
+<figcaption>SET propagation through a binate gate results in two independent SET pulses at the output of the gate</figcaption>
+</figure>
+<p>As for the binate gates, like XOR or XNOR, the gate unateness, and thus the direction of the output SET pulse, depends on the value of the side input. In the "Vanilla" STA-mode, since it doesn't perform Boolean evaluation at the gate level, the value of the side inputs is not considered during the evaluation of the output SET pulse. Thus, as shown in the next <a href="#fig:binate_gates">figure</a>, two SET cases are generated at the output of the gate, one SET with positive direction and one with negative direction.</p>
+<p><a href="#tab:non-reconvergence_vanilla_output_set_pulse_cases">Table</a> below summarises the output SET pulse cases generated when a SET pulse reaches only one input of a gate (non-reconvergence).</p>
+<table id="tab:non-reconvergence_vanilla_output_set_pulse_cases">
+<caption><strong>Non-Reconvergence Output SET Pulse Cases for "Vanilla" STA-mode</strong></caption>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Positive Unate</strong></td>
+ <td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_Propagation_Unate_Gate.png"></td>
+<td style="text-align: center; vertical-align: middle;">1 Output SET Pulse Produced</td>
+<td style="text-align: center; vertical-align: middle;">The output SET pulse has the same direction with the input SET pulse</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>Negative Unate</strong></td>
+ <td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_Propagation_NAND.png"></td>
+ <td style="text-align: center; vertical-align: middle;">1 Output SET Pulse Produced</td>
+ <td style="text-align: center; vertical-align: middle;">The output SET pulse has the opposite direction of the input SET pulse</td>
+ </tr>
+ <tr>
+ <td style="text-align: center; vertical-align: middle;"><strong>Binate</strong></td>
+  <td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/binate_gate_no_reconvergence_output_pulse.png"></td>
+  <td style="text-align: center; vertical-align: middle;">2 Output SET Pulses Produced <sup><a href="#footnote-1">1</a></sup></td>
+  <td style="text-align: center; vertical-align: middle;">Regardless the input SET pulse direction, both positive and negative SET pulse will be produced at the output pin</td>
+</tbody>
+</table>
+
+<div class="footnotes" style="font-size: 12px;">
+  <hr />
+  <ol>
+    <li id="footnote-1"><p>Binate gates produce both <strong>positive</strong> and <strong>negative</strong> SET pulse at the output <strong>due to unknown side input values</strong>.</p>
+    </li>
+  </ol>
+</div>
+
+<p>However, during the SET pulse propagation to the forward logic cone a reconvergence point is likely to be reached. A reconvergence point is a gate where two or more SET pulses reach its input pins from different paths, as shown in the <a href="#fig:reconvergence_point">figure</a> below.</p>
+<figure id="fig:reconvergence_point">
+<p><img alt="SET Pulse Reconvergence" src="figures/Reconvergence_Point.png" />
+  </p>
+<figcaption>Gate C8 is a reconvergence point, where two SET pulses reach its input pins, due to the divergence of the original SET pulse at the fan-out of gate C2</figcaption>
+</figure>
+<p>To propagate the SETs to the output of the reconvergence point the following steps take place:</p>
+<ol>
+<li>Each SET pulse is propagated separately through the gates, producing a temporal output SET pulse. The produced SET pulse can be either positive or negative, based on the gate unateness and the direction of the input SET pulse.</li>
+<li>Examine all the positive temporal SET pulses at the output of the gate, if any, and fuse them as a single positive output SET pulse. The produced positive output SET pulse is constructed as the minimum among the rise temporal SET edges (earliest rise edge) and the maximum of the fall temporal SET edges (latest fall edge).</li>
+<li>Similarly, examine all the negative temporal SET pulses at the output of the gate, if any, and fuse them as a single negative output SET pulse. The produce negative output SET pulse is constructed as the minimum among the fall temporal SET edges (earliest fall edge) and the maximum of the rise temporal SET edges (latest rise edge).</li>
+</ol>
+<p>The following <a href="#tab:reconvergence_point_output_set_pulse_cases">table</a> summarises the output SET pulse cases based on gate unateness and the input SET pulse direction.</p>
+<table id="tab:reconvergence_point_output_set_pulse_cases">
+<caption><strong>Reconvergence Output SET Pulse Cases for "Vanilla" STA-mode</strong></caption>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;" rowspan="2;"><strong>Positive Unate</strong></td>
+<td style="text-algin: center; vertical-align: middle;">Same Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_unate_same_input_direction.png"></td>
+<td style="text-algin: center; vertical-align: middle;">1 Output SET Pulse Produced</td>
+<td style="text-algin: center; vertical-align: middle;">Same direction with the input SET pulses</td>
+</tr>
+<tr>
+<td style="text-algin: center; vertical-align: middle;">Opposite Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_unate_opposite_input_direction.png"></td>
+<td style="text-algin: center; vertical-align: middle;">2 Output SET Pulses Produced</td>
+<td style="text-algin: center; vertical-align: middle;"><p><li>Positive input SET &#8594; Positive output SET</li><li>Negative input SET &#8594; Negative output SET</li></p></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;" rowspan="2;"><strong>Negative Unate</strong></td>
+<td style="text-algin: center; vertical-align: middle;">Same Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_vanilla_negative_unate_same_direction_pulses.png"></td>
+<td style="text-algin: center; vertical-align: middle;">1 Output SET Pulse Produced</td>
+<td style="text-algin: center; vertical-align: middle;">Opposite direction with the input SET pulses</td>
+</tr>
+<tr>
+<td style="text-algin: center; vertical-align: middle;">Opposite Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_vanilla_negative_unate_different_direction_pulses.png"></td>
+<td style="text-algin: center; vertical-align: middle;">2 Output SET Pulses Produced</td>
+<td style="text-algin: center; vertical-align: middle;"><p><li>Positive input SET &#8594; Negative output SET</li><li>Negative input SET &#8594; Positive output SET</li></p></td>
+</tr>
+<tr>
+<td style="text-algin: center; vertical-align: middle;" rowspan="2;"><strong>Binate</strong></td>
+<td style="text-algin: center; vertical-align: middle;">Same Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_binate_same_input_direction.png"></td>
+<td style="text-algin: center; vertical-align: middle;">2 Output SET Pulses Produced</td>
+<td style="text-algin: center; vertical-align: middle;">Positive & Negative</td>
+</tr>
+<tr>
+<td style="text-algin: center; vertical-align: middle;">Opposite Pulse Directions</td>
+<td style="text-algin: center; vertical-align: middle;"><img alt="" src="figures/reconvergence_binate_same_input_direction.png"></td>
+<td style="text-algin: center; vertical-align: middle;">2 Output SET Pulses Produced</td>
+<td style="text-algin: center; vertical-align: middle;">Positive & Negative</td>
+</tbody>
+</table>
+
+<h5 id="detailed-timestamp-based-sta-mode">Detailed TimeStamp-based STA-mode</h5>
+<p>The "Vanilla" STA-mode even though it is quite fast, the produced SET pulses are not as accurate as those produced by SPICE simulation, especially for reconvergence points. Thus, a more accurate model is required, which is the "Detailed TimeStamp-based STA-mode". In this mode, Boolean evaluation at the gate level is performed, taking into account the arrival time of the SET pulses as well as the Boolean function of the examining gate. It is important to note that this mode <strong>doesn't perform input vectors justification</strong>.</p>
+<table id="tab:detailed_time_stamp_based_sta_mode_input_output_combinations">
+<caption><strong>Input SET Cases & Possible Output SET Pulse Cases for Detailed TimeStamp-based STA-mode</strong></caption>
+<thead>
+<tr>
+<td style="text-align: center;"><strong>Input SET Cases</strong></td>
+<td style="text-align: center;" colspan="2"><strong>Possible Output SET Pulse Cases</strong></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_positive_nonover.png"></td>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"><strong>Logically Masked</strong></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_0_masked.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_1_masked.png"></td>
+</tr>
+
+<tr>
+<td style="text-align: center;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_positive_over.png"></td>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"><strong>Intersection of Input SET Pulses</strong></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_positive_inter.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_negative_inter.png"></td>
+</tr>
+
+<tr>
+<td style="text-align: center;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_negative_nonover.png"></td>
+<td style="text-align: center; vertical-align: middle;" rowspan="4"><strong>Union of Input SET Pulses</strong></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_negative_train.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_negative_over.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_negative_over.png"></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_positive_train.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_positive_over.png"></td>
+</tr>
+
+<tr>
+<td style="text-align: center;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_diff_nonover.png"></td>
+<td style="text-align: center; vertical-align: middle;" rowspan="4"><strong>One Input Pulse Propagates / Other One Masked</strong></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_positive_nonover.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_positive_inter.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"><img alt="" src="figures/SET_input_output_combinations/input_diff_over.png"></td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_negative_nonover.png"></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/SET_input_output_combinations/output_negative_over_second_case.png"></td>
+</tr>
+</tbody>
+</table>
+
+<p>The main difference of this mode compared to the "Vanilla" STA-mode lies in the handling of the reconvergence. As mentioned, "Vanilla" STA-mode considers each arriving SET pulse separately and performs MAX analysis among all possible temporal output pulses, propagating a single pessimistic output SET pulse. In contrast, in the Detailed TimeStamp-based STA-mode, Boolean evaluation is performed considering the arrival times of the input SET pulses propagating a more realistic SET pulse, compared to "Vanilla". In any other case, i.e. no reconvergence, both Detailed and "Vanilla: mode operate in the same way. A more thorough illustration for Detailed mode is presented in the above <a href="#tab:detailed_time_stamp_based_sta_mode_input_output_combinations">table</a>; Each combination of input pulses, presented in the left column, produce an output SET pulse which shape is based on the Boolean function of the examining gate and can be one of those presented on the right side.</p>
+<h5 id="bounded-timestamp-based-sta-mode">Bounded TimeStamp-based STA-mode</h5>
+<figure class="inline end" id="fig:bounded_timestamp_based_sta_mode_output_set_pulse">
+<p><img alt="Bounded TimeStamp-based STA-mode output SET pulse" src="figures/Phase_2_Bounded_SET_pulse.png" />
+  </p>
+<figcaption>SET output pulse produced by the bounding technique</figcaption>
+</figure>
+<p>However, the Detailed TimeStamp-based interval analysis, as shown in the above <a href="#tab:detailed_time_stamp_based_sta_mode_input_output_combinations">table</a>, can produce a "train" of multiple pulses which will be propagated to the forward logic cone. Such a pulse "train" can reach another reconvergence point and produce even more pulses, increasing that way the number of timestamp and, thus, the overall runtime of the SET propagation. Therefore, the Bounded TimeStamp-based STA-mode is introduced as a means to speed up the TimeStamp-based interval analysis while achieving at the same time a better accuracy compared to the "Vanilla" STA-mode. In the Bounded STA-mode, the timestamp analysis of the above <a href="#tab:detailed_time_stamp_based_sta_mode_input_output_combinations">table</a> is performed, but the possible output SET pulse(s) that the Detailed mode would produce are now an intermediate result. The output SET pulse is a single pulse (a single pair of rise and fall edges) constructed by the earliest and latest edge of the individual smaller pulse of the "train", as shown in the next <a href="#fig:bounded_timestamp_based_sta_mode_output_set_pulse">figure</a>. Thus, a pulse "train" is never propagated to the forward logic cone, reducing the execution time of the TimeStamp-based interval analysis compared to the Detailed TimeStamp-based STA-mode.</p>
+<h3 id="masking-mechanisms">Masking Mechanisms</h3>
+<p>The propagation of a SET pulse may stop due to the existence of the three masking mechanisms: (i) Logical, (ii) Electrical, and (iii) Timing-Window Masking.</p>
+<h4 id="logical-masking">Logical Masking</h4>
+<figure class="inline end" id="fig:logical_masking">
+<p><img alt="Logical Masking" src="figures/Logical_Masking.png" />
+  </p>
+<figcaption>Logical Masking</figcaption>
+</figure>
+<p>Logical Masking occurs when a SET pulse arrives at an input of a gate and its propagation stops because one of the side input is at a controlling logic value, or the values of the side inputs doe not allow the SET arriving at the input of the gate to propagate to the output. That way, the SET pulse is filtered and the output of the gate will remain at its nominal value.</p>
+<p>For logical masking to be supported, the current state of the circuit must be specified. In Vector-based SET analysis, this can be done by creating a case analysis giving values to gatepins, while in Probabilistic SET analysis this can be done by annotating the gatepins with their static probabilities, either by loading a SAIF file or using the 0-Algorithm. More information about the circuit state definition refer to the section <a href="#circuit-state-definition">Circuit State Definition</a>. Moreover, a SET probability lower threshold exists that determines whether the propagated pulse to the output is logically masked.</p>
+<h4 id="electrical-masking">Electrical Masking</h4>
+<p>Electrical masking occurs due to the parasitic capacitance and resistance of the subsequent gate in the sensitised path, as well as the wire load effect, attenuating the generated SET pulse.
+Attenuation of a SET pulse results in a non full-swing signal, i.e. 0 &#8594; Vdd / Vdd &#8594; 0, something that is not supported natively by the STA engine.</p>
+<figure>
+<p><img alt="Electrical Masking" src="figures/Electrical_Masking.png" />
+  </p>
+<figcaption>Electrical Masking</figcaption>
+</figure>
+<p>To detect if a SET pulse becomes electrically masked as it is propagated through the forward logic cone, the pulse width (<code>PW</code>) is checked. The latter is computed as shown in the <a href="#tab:electrical_masking">figure</a> below, based on the rise and fall arrival times, which are related to the Vth amplitude of each edge.</p>
+<table id="tab:electrical_masking">
+<caption><strong>Detection by STA engine if a SET pulse is electrically masked</strong></caption>
+<thead>
+<tr>
+<td style="text-align: center;"><img id="fig:non_electrically_masked" alt="" src="figures/Electrical_Masking_Positive_PW.png"><br>Not Electrically Masked SET Pulse</td>
+<td style="text-align: center;"><img id="fig:electrically_masked" alt="" src="figures/Electrical_Masking_Zero_PW.png"><br>Electrically Masked SET Pulse</td>
+</tr>
+</thead>
+</table>
+
+<p>In case the SET pulse width is positive (<a href="#fig:non_electrically_masked">left</a> figure above), then the SET pulse is not electrically masked and the SET pulse propagation continues. Otherwise, the SET pulse is electrically masked, as shown in the <a href="#fig:electrically_masked">right</a> figure above, and the propagation is terminated.</p>
+<h4 id="timing-window-masking">Timing-Window Masking</h4>
+<figure class="inline end" id="fig:timing_window_masking">
+<p><img alt="Timing-Window Masking" src="figures/Timing_Masking.png" />
+  </p>
+<figcaption>Timing-Window Masking</figcaption>
+</figure>
+<p>Nonetheless, logical and electrical masking may not be able to filter the SET pulse, and the latter may be able to reach a sequential element. Timing-window masking occurs when a SET pulse reaches the input of a sequential element but outside the [<code>SETUP</code>, <code>HOLD</code>] window during which the sequential element captures the input data, and thus this SET is ignored.</p>
+<p>Timing-Window masking occurs due to the temporal randomness of the particle strike time and the realisation that the pulse arrival time at the latch has to be within the latching window for the error to occur. In section <a href="#probabilistic-timing-window-masking">Probabilistic Timing-Window Masking</a> more details on the supported model of the timing-window masking are provided.</p>
+<h2 id="set-probabilities-computation">SET Probabilities Computation</h2>
+<p>As mentioned in section <a href="#logical-masking">Logical Masking</a>, the SET propagation continues until the side input values of the reaching gate filter out the incoming fault. This requires the nominal state of the circuit, which is specified directly in the Vector-based SET Analysis. However, in Probabilistic SET Analysis the static probabilities are extracted after teh circuit simulation for the target application. These probabilities provide a general understanding onf the circuit's state, indicating the probability of each gate being at logic-1 or logic-0. Thus, as each gatepin in the circuit is associated with a probability, the SET generation and propagation can also be linked with a probability (<span class="arithmatex">\(P_{SET}\)</span>).</p>
+<h3 id="initial-set-probability">Initial SET Probability</h3>
+<p>Generating a SET pulse at the output of the target gate requires the latter to be in the appropriate state. Thus, generating a positive SET requires the target gate's output to be at logic-0; otherwise, the SET would not be observable. Similarly, this principle applies to the generation of negative SET pulses. That way, the initial SET probability is equal to its static probability <span class="arithmatex">\(P_0(G_i)\)</span> for a positive SET generation at the gate <span class="arithmatex">\(G_i\)</span>, and its static probability <span class="arithmatex">\(P_1(G_i)\)</span> for a negative SET generation at the gate <span class="arithmatex">\(G_i\)</span>, as shown in the following equation:</p>
+<div class="arithmatex">\[
+P^{init}_{SET}(G_i) = 
+\begin{cases}
+\text{P}_0\text{(G}_\text{i}\text{),} &amp;\quad\text{positive SET pulse generation} \\
+\text{P}_1\text{(G}_\text{i}\text{),} &amp;\quad\text{negative SET pulse generation} \\
+\end{cases}
+\]</div>
+<h3 id="non-reconvergence-case">Non-Reconvergence Case</h3>
+<p>After the SET generation at the output of the gate, it is propagated to the forward logic cone. As the SET pulse traverses through subsequent gates, its SET probability must be updated to reflect the probability of the SET pulse occurring at the gate's output. When a single (<strong>non-reconvergence</strong>) SET arrives at the input of a gate, then the SET propagates to the output of the gate <strong>only</strong> when the side inputs values do not filter the fault. Thus, the SET probability at the output of the reached gate <span class="arithmatex">\(G_i\)</span> can be computed as:</p>
+<div class="arithmatex">\[
+P_{SET}(G_i/out) = P_{SET}(G_i/\alpha) \times \sum_{m \in M(\alpha)} P_{side}(m)
+\]</div>
+<p>, with <span class="arithmatex">\(G_i/\alpha\)</span> being the input pin of gate <span class="arithmatex">\(G_i\)</span>, where the SET pulse arrives with probability <span class="arithmatex">\(P_{SET}(G_i/\alpha)\)</span>. As for the sum <span class="arithmatex">\(\sum_{m \in M(\alpha)} P_{side}(m)\)</span>, <span class="arithmatex">\(M(\alpha)\)</span> is the set of the side inputs values combinations, in the canonical form of minterms, that allow the SET to propagate to <span class="arithmatex">\(G_i\)</span>'s output, and <span class="arithmatex">\(P_{side}(m)\)</span> is the probability for each combination. 
+An example with a positive SET pulse reaching an AND gate is shown in the <a href="#fig:non-reconvergence-set-prob">figure</a> below.</p>
+<figure id="fig:non-reconvergence-set-prob">
+<p><img alt="Non Reconvergence SET Probability" src="figures/non_reconvergence_probability_and_gate.png" />
+  </p>
+<figcaption>Output SET Probability for a positive SET pulse reaching an AND gate</figcaption>
+</figure>
+<h3 id="reconvergence-case">Reconvergence Case</h3>
+<p>In the case of reconvergence, the computation of the SET probability at the output of the gate depends on the STA-mode used for the SET propagation (similar to the shape of the output SET pulse).</p>
+<h4 id="set-probability-computation-in-vanilla-sta-mode">SET Probability Computation in "Vanilla" STA-mode</h4>
+<p>As mentioned in section <a href="#vanilla-sta-mode">"Vanilla" STA-mode</a>, "Vanilla" STA-mode is the fastest but also the most pessimistic mode among the other STA-modes. Thus, since the produced output SET pulse is the worst case pulse, its SET probability must also be the worst case.</p>
+<p>In general, in this mode, two output SET pulses can be produced, i.e. a positive one and a negative one. Each input SET pulse is considered separately, producing one or two pulses at the output based on the gate unateness, as shown in this <a href="#tab:reconvergence_point_output_set_pulse_cases">table</a>.</p>
+<p>As for the shape of a positive SET pulse, MAX analysis is performed among the intermediate positive SET pulses, and it is constructed by the earliest rise and latest fall edge (as described in section <a href="#vanilla-sta-mode">"Vanilla" STA-mode</a>).
+As for the corresponding SET probability, once more, MAX analysis is performed among the probabilities of the input SET pulses producing an intermediate positive SET pulse. Based on this SET pulse, the side input values propagating this SET pulse to the output are extracted and the final output SET probability for the positive SET pulse is:</p>
+<div class="arithmatex">\[
+P^{POS}_{SET}(out) = P_{SET}(I) \times \sum_{m \in M(I)} P_{side}(m)
+\]</div>
+<p>where <span class="arithmatex">\(P_{SET}(I) = \max \{P^{pos}_{SET}(i_1), ..., P^{pos}_{SET}(i_n)\}\)</span> is the probability of SET pulse <span class="arithmatex">\(I\)</span>, which is the one with the maximum probability among those producing a positive SET pulse at the output of the gate. Similarly to the non-reconvergence case, the $\sum_{m \in M(I)} P_{side}(m) $ is the accumulated probability of all side input values combinations propagating to the output from the input SET pulse <span class="arithmatex">\(I\)</span>. Similarly, based on the same principles, the probability of a negative output SET pulse can be computed.</p>
+<figure id="fig:vanilla_reconv_set_prob">
+<p><img alt="Vanilla Reconvergence SET Probability" src="figures/reconvergence_binate_vanilla_set_prob.png" />
+  </p>
+<figcaption>Reconvergence of two SET pulses with different directions at a XOR gate</figcaption>
+</figure>
+<p>An example is provided in the <a href="#fig:vanilla_reconv_set_prob">figure</a> to clarify the aforementioned computation method, demonstrating the reconvergence of two SET pulses with different directions at a XOR gate. The SET probabilities for the pulses are <span class="arithmatex">\(P_{SET}(\alpha) = 0.5\)</span> and <span class="arithmatex">\(P_{SET}(b) = 0.75\)</span>, respectively. Each input SET pulse is handled separately.</p>
+<ul>
+<li>Positive SET pulse at input pin <span class="arithmatex">\(\alpha\)</span>: Since the SET reaches a binate gate, it produces a positive intermediate SET pulse through the positive unate arc (1) and a negative one through the negative unate arc (2).</li>
+<li>Negative SET pulse at input pin <span class="arithmatex">\(b\)</span>: Since the SET reaches a binate gate, it produces a positive intermediate SET pulse through the negative unate arc (3) and a negative one through the positive unate arc (4).</li>
+</ul>
+<p>Finally, at the output of the XOR gate, two SET pulses will be produced:</p>
+<ul>
+<li>a positive one, after performing MAX analysis among intermediate pulses (1) and (3), with SET probability <span class="arithmatex">\(P_{SET}(out|pos) = \max \{P_{SET}(\alpha), P_{SET}(b)\} = 0.75\)</span>, and</li>
+<li>a negative one, after performing MAX analysis among intermediate pulses (2) and (4), with SET probability <span class="arithmatex">\(P_{SET}(out|neg) = \max \{P_{SET}(\alpha), P_{SET}(b)\} = 0.75\)</span></li>
+</ul>
+<h4 id="set-probability-computation-in-detailed-timestamp-based-sta-mode">SET Probability Computation in Detailed TimeStamp-based STA-mode</h4>
+<p>In contrast to "Vanilla" STA-mode, where MAX analysis is performed for the computation of the output SET probability, in the Detailed TimeStamp-based mode the output SET pulse probability depends on the output pulse case (presented in this <a href="#tab:detailed_time_stamp_based_sta_mode_input_output_combinations">table</a>) based on which the output SET is constructed. The following <a href="#tab:detailed_set_prob_computation">table</a> presents the equations for the computation of the output SET pulse probability for each output pulse case.</p>
+<table id="tab:detailed_set_prob_computation">
+<p><caption><strong>Detailed TimeStamp-based STA-mode Output SET Probability Computation</strong></caption></p>
+<thead>
+<tr>
+<th colspan="2" style="text-align: center; vertical-align: middle;">Output SET Pulse Case</th>
+<th style="text-align: center; vertical-align: middle;">Example</th>
+<th style="text-align: center; vertical-align: middle;">Output SET Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" style="text-align: center; vertical-align: middle;">Logically Masked</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/logically_masked.png"></td>
+<td style="text-align: center; vertical-align: middle;">$$P_{SET}(out)=0$$</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align: center; vertical-align: middle;">Intersection of Input SET Pulses</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/intersection.png"></td>
+<td style="text-align: center; vertical-align: middle;">$$P_{SET}(out)=P_{SET}(\alpha) \times P_{SET}(\beta)$$</td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align: center; vertical-align: middle;">Union of Input SET Pulses</td>
+<td style="text-align: center; vertical-align: middle;">Non-Overlapping</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/union_non_overlapping.png"></td>
+<td rowspan="2" style="text-align: center; vertical-align: middle;">$$P_{SET}(out)=max\{P_{SET}(\alpha),P_{SET}(\beta)\}$$</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;">Overlapping</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/union_overlapping.png"></td>
+</tr>
+<tr>
+<td rowspan="2" style="text-align: center; vertical-align: middle;">One Input SET Pulse Propagates / Other One Gets Masked</td>
+<td style="text-align: center; vertical-align: middle;">Non-Overlapping</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/one_pulse_pass_non_overlapping.png"></td>
+<td rowspan="2" style="text-align: center; vertical-align: middle;">$$P_{SET}(out)=P_{SET}(pulse_{propagated})$$</td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;">Overlapping</td>
+<td style="text-align: center; vertical-align: middle;"><img alt="" src="figures/Detailed_Reconvergence_Cases_SET_Prob/one_pulse_pass_overlapping.png"></td>
+</tr>
+</tbody>
+</table>
+<p>The above equations compute the output SET probability considering only the input SET pulses and not the side inputs values. Thus, to compute the final output SET probability, the latter is multiplied with the probability of side input combinations allowing the produced SET pulse to appear at the output of the gate (similarly with the equation in section <a href="#non-reconvergence-case">Non-Reconvergence Case</a>).</p>
+<h4 id="set-probability-computation-in-bounded-timestamp-based-sta-mode">SET Probability Computation in Bounded TimeStamp-based STA-mode</h4>
+<p>As for the Bounded TimeStamp-based STA-mode, the only difference with the Detailed one, is that instead of producing pulse trains at the output of the gate, it creates a unified pulse constructed by the earliest and latest edge of the train, as shown in this <a href="#fig:timing_window_masking">figure</a>. As for the computation probability of the output SET pulse, the equations of the Detailed mode are still valid for the Bounded mode. </p>
+<h3 id="probabilistic-timing-window-masking">Probabilistic Timing-Window Masking</h3>
+<p>Concluding the phase of the SET propagation the SET pulse might reach some sequential elements of the circuit. To compensate with the probabilistic nature of UPSET's SET propagation, the latching probability of the SET pulse <span class="arithmatex">\(P_{Latched SET}(E_i)\)</span> arriving at an endpoint pin <span class="arithmatex">\(E_i\)</span> (PO or sequential output) is defined as:</p>
+<div class="arithmatex">\[
+P_{Latched SET}(E_{i}) = P_{SET}(E_{i}) \times \frac{PW - W_{Latching}}{P_{clock}}
+\]</div>
+<p>, with <span class="arithmatex">\(P_{SET}(E_{i})\)</span> the SET pulse probability at <span class="arithmatex">\(E_{i}\)</span>, <span class="arithmatex">\(PW\)</span> pulse width time duration of the examined SET, while <span class="arithmatex">\(W_{Latching}\)</span> is the latching timing window at <span class="arithmatex">\(E_{i}\)</span> and <span class="arithmatex">\(P_{clock}\)</span> is the period of the related clock.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="design_configuration.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Design Configuration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Design Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="set_sensitivity_metrics.html" class="md-footer__link md-footer__link--next" aria-label="Next: SET Sensitivity Metrics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                SET Sensitivity Metrics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Circuits and Systems Laboratory, University of Thessaly, Greece
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Circuits-and-Systems-Lab-CASlab/UPSET" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/circuits-and-systems-laboratory-uth" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "search.suggest", "search.highlight", "navigation.path", "navigation.top", "navigation.footer"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
