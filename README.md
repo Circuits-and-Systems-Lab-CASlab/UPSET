@@ -74,7 +74,7 @@ A higher definition of the demo can be found in [Youtube](https://youtu.be/6DBn7
 ## Related Publications
 Below you can find a list of the publications that are related to UPSET engine.
 
-- [Towards a Comprehensive SET Analysis Flow for VLSI Circuits using Static Timing Analysis](https://ieeexplore.ieee.org/document/10090747)
+- [Towards a Comprehensive SET Analysis Flow for VLSI Circuits using Static Timing Analysis](https://doi.org/10.1109/DFT59622.2023.10313533)
    - **Authors**: Christos Georgakidis, Dimitris Valiantzas, Stavros Simoglou, Iordanis Lilitsis, Nikolaos Chatzivangelis, Ilias Golfos, Marko Andjelkovic, Christos Sotiriou, Milos Krstic
    - **Conference**: 2023 IEEE International Symposium on Defect and Fault Tolerance in VLSI and Nanotechnology Systems (DFT)
 
