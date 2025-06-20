@@ -24,6 +24,7 @@ This section explains the used docker filesystem while also act as a guide on ho
 ## Build Docker Image
 | Command | Description |
 | --- | --- |
+| `> cd Docker_files` | Go to Docker_files folder of UPSET repository |
 | `> mkdir data` | Create the data folder |
 | `> cd data` | Go to data folder |
 | `> cp -r <INSTALL folder> ./` | Copy the desired INSTALL folder |
@@ -42,6 +43,7 @@ This section explains the used docker filesystem while also act as a guide on ho
 | Command | Description |
 | --- | --- |
 | `> cd ../use_docker` | Go to use_docker folder |
+| `> xhost +` | Ensure that you can open UPSET GUI insde the docker container |
 | `> make run` | Run the docker container |
 | `> make sh` | Run in different terminal if container is already running without terminating it [optional] |
 
@@ -50,10 +52,22 @@ This section explains the used docker filesystem while also act as a guide on ho
     If you want to run on different terminal then use `make sh`.
     Also, running `make sh` without prior `make run` will not work.
 
-
 ## Docker/VM Filesystem
 | Folder | Description |
 | --- | --- |
 | `/home` | Home |
 | `/home/data/<INSTALL folder>` | UPSET folder |
 | `/home/data` | Data (Shared) Folder |
+
+# Run UPSET in Docker
+
+After building the docker image and running the docker container, you can run UPSET in the docker container.
+
+## Run UPSET
+
+| Command | Description |
+| --- | --- |
+| `> cd /home/data/UPSET` | Go to UPSET folder |
+| `> export UPSET_INSTALL_DIR = $PWD` | Set the UPSET_INSTALL_DIR environment variable |
+| `> ./UPSET-setup.sh` | Run the setup script |
+| `> ./UPSET` | Run UPSET |

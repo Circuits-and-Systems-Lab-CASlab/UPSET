@@ -1,7 +1,7 @@
 TAG=asp_docker_ubuntu
 VERSION=v1
 IMAGE=upset_docker_ubuntu
-UPSET_PATH=../data/INSTALL
+DATADIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../data)
 
 build-docker:
 	-docker image rm -f $(IMAGE):$(VERSION)
@@ -9,7 +9,7 @@ build-docker:
 
 run:
 	-docker container rm $(TAG) -f
-	docker run -it  --security-opt label=type:container_runtime_t --network=host -e DISPLAY=$$DISPL -v ${UPSET_PATH}:/home/UPSET -v /tmp/.X11-unix:/tmp/.X11-unix --name $(TAG) $(IMAGE):$(VERSION)
+	docker run -it  --security-opt label=type:container_runtime_t --network=host -e DISPLAY=$$DISPLAY -v -v $(DATADIR)/:/home/data -v /tmp/.X11-unix:/tmp/.X11-unix --name $(TAG) $(IMAGE):$(VERSION)
 
 sh:
 	docker exec -it $(TAG) /bin/bash

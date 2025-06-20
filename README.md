@@ -45,15 +45,22 @@ In order to run UPSET with docker, the user needs to download the UPSET tarball 
 
 ```bash
 cd Docker_files
+# Create the data folder and copy the INSTALL folder inside it
 mkdir data
-cp -r <INSTALL folder> data
-cd create_docker
+cd data
+cp -r <INSTALL folder> ./
+# Build the docker image
+cd ../create_docker
 make build-docker
+# Run the docker container
 cd ../use_docker
+xhost +
 make run
 
 /* In Docker Environment */
-cd /home/UPSET
+cd /home/data/UPSET
+export UPSET_INSTALL_DIR = $PWD
+./UPSET-setup.sh
 ./UPSET
 
 /* Save/Load Docker Image */
@@ -62,6 +69,8 @@ make save
 cd use_docker
 make load
 ```
+
+More information regarding the use of UPSET in a docker container can be found [here](https://circuits-and-systems-lab-caslab.github.io/UPSET/docker_setup/).
 
 ## DEMO
 Below there is a demo video of perfoming an exhaustive SET analysis in UPSET.
