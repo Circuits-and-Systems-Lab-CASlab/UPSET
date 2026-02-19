@@ -1,0 +1,25 @@
+@media print {
+    /* admonition overrides */
+
+    /* admonition icon */
+    .md-typeset :is(.admonition-title,summary):before {
+      top: 0.6rem;
+      left: 0.6rem;
+    }
+
+    /* left border
+    .md-typeset :is(.admonition,details) {
+      border-left-width: 0.1rem;
+      padding: 0rem 0rem 0rem 0rem;
+      margin-left: 1rem;
+    }
+
+    [dir=ltr] .md-typeset :is(.admonition,details) {
+      margin-left: 1rem;
+    }
+
+    html .md-typeset :is(.admonition,details)>:last-child {
+      margin-left: 0.6rem;
+    }
+ */
+}
