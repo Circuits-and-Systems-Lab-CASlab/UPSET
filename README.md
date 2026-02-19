@@ -86,10 +86,12 @@ Below you can find a list of the publications that are related to UPSET engine.
 - [Towards a Comprehensive SET Analysis Flow for VLSI Circuits using Static Timing Analysis](https://doi.org/10.1109/DFT59622.2023.10313533)
    - **Authors**: Christos Georgakidis, Dimitris Valiantzas, Stavros Simoglou, Iordanis Lilitsis, Nikolaos Chatzivangelis, Ilias Golfos, Marko Andjelkovic, Christos Sotiriou, Milos Krstic
    - **Conference**: 2023 IEEE International Symposium on Defect and Fault Tolerance in VLSI and Nanotechnology Systems (DFT)
-
+- [UPSET: A Comprehensive Probabilistic Single Event Transient Analysis Flow for VLSI Circuits Using Static Timing Analysis](https://www.mdpi.com/2079-9292/15/4/818)
+   - **Authors**: Christos Georgakidis, Dimitris Valiantzas, Nikolaos Chatzivangelis, Marko Andjelkovic, Christos Sotiriou, Milos Krstic
+   - **Journal**: MDPI Electronics, Special Issue: Single-Event Effects: Modeling, Prediction, Testing and Radiation Hardening 
 
 ## Citation
-If you use UPSET in your research, please cite the following paper:
+If you use UPSET in your research, please cite the following paper(s):
 
 ```
 @inproceedings{georgakidis2023towards,
@@ -99,5 +101,18 @@ If you use UPSET in your research, please cite the following paper:
   pages={1--6},
   year={2023},
   organization={IEEE}
+}
+
+@Article{electronics15040818,
+  AUTHOR = {Georgakidis, Christos and Valiantzas, Dimitris and Chatzivangelis, Nikolaos and Andjelkovic, Marko and Sotiriou, Christos and Krstic, Milos},
+  TITLE = {UPSET: A Comprehensive Probabilistic Single Event Transient Analysis Flow for VLSI Circuits Using Static Timing Analysis},
+  JOURNAL = {Electronics},
+  VOLUME = {15},
+  YEAR = {2026},
+  NUMBER = {4},
+  ARTICLE-NUMBER = {818},
+  URL = {https://www.mdpi.com/2079-9292/15/4/818},
+  ISSN = {2079-9292},
+  DOI = {10.3390/electronics15040818}
 }
 ```
