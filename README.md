@@ -62,6 +62,12 @@ A typical project structure is:
     └── testcases/
 ```
 
+To run the container, use the following command from the Makefile:
+
+```cmd
+make run
+```
+
 ## DEMO
 Below there is a demo video of perfoming an exhaustive SET analysis in UPSET.
 
