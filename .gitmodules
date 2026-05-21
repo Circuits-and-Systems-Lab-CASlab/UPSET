@@ -1,0 +1,3 @@
+[submodule "workspace/pdks/IHP-Open-PDK"]
+	path = workspace/pdks/IHP-Open-PDK
+	url = https://github.com/IHP-GmbH/IHP-Open-PDK.git
