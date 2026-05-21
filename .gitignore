@@ -1,0 +1,13 @@
+# Downloaded proprietary/binary release
+.upset/
+vendor/upset/
+UPSET.zip
+
+# Runtime outputs
+workspace/outputs/
+workspace/runs/
+
+# Docker / local env
+.env
+
+workspace/UPSET

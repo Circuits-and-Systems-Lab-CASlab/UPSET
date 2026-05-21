@@ -6,12 +6,15 @@
 
 
 ## Table of Contents
-- [What is UPSET?](#what-is-upset)
-- [How to Start](#how-to-start)
-- [DEMO](#demo)
-- [Related Publications](#related-publications)
-- [License](#license)
-- [Citation](#citation)
+- [UPSET](#upset)
+  - [Table of Contents](#table-of-contents)
+  - [Acknowledgements](#acknowledgements)
+  - [What is UPSET?](#what-is-upset)
+  - [How to Start](#how-to-start)
+  - [Running UPSET with Docker](#running-upset-with-docker)
+  - [DEMO](#demo)
+  - [Related Publications](#related-publications)
+  - [Citation](#citation)
 
 ## Acknowledgements
 
@@ -57,13 +60,13 @@ cd ../use_docker
 xhost +
 make run
 
-/* In Docker Environment */
+# In Docker Environment
 cd /home/data/UPSET
-export UPSET_INSTALL_DIR = $PWD
+export UPSET_INSTALL_DIR=$PWD
 ./UPSET-setup.sh
 ./UPSET
 
-/* Save/Load Docker Image */
+# Save/Load Docker Image
 cd create_docker
 make save
 cd use_docker
