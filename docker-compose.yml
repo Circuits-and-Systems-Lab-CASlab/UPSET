@@ -2,7 +2,7 @@ services:
   upset:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
 
     image: upset-runtime:ubuntu20.04
     container_name: upset

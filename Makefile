@@ -13,14 +13,14 @@ run: fetch
 
 gui: fetch
 	xhost +local:docker
-	$(DOCKER_COMPOSE) run --rm upset ./UPSET
+	$(DOCKER_COMPOSE) run --rm upset UPSET
 
-setup-shell: fetch
-	xhost +local:docker
-	$(DOCKER_COMPOSE) run --rm upset bash -lc 'env | grep -E "UPSET|LD_|LANG|LC_" && /bin/bash'
+down:
+	$(DOCKER_COMPOSE) down --remove-orphans || true
 
-clean:
-	$(DOCKER_COMPOSE) down --remove-orphans
+clean: down
+	rm -rf workspace/reports/*
 
-distclean: clean
-	rm -rf .upset
+distclean: down
+	rm -rf .upset workspace/reports/*
+	-docker image rm upset-runtime:ubuntu20.04
