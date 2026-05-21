@@ -183,10 +183,13 @@ log_output_to_file "$REPORT_DIR/set_analysis.log"
 perform_exhaustive_SET_analysis -req 2
 close_log_output_file
 
-puts "Listing all gate pins SET analysis information"
+puts "Listing all gate pins SET analysis summary"
 log_output_to_file "$REPORT_DIR/set_gatepins.log"
 report_SET_analysis_sensitivity_measurements
 close_log_output_file
+
+puts "Dumping all gate pins SET analysis information to CSV"
+dump_all_gatepins_SET_analysis_info_to_csv "$REPORT_DIR/set_gatepins.csv"
 
 # --------------------------------------------------------------------
 # STEP 7: Optional ECO SET Mitigation Techniques
