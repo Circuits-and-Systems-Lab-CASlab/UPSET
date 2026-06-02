@@ -13,6 +13,9 @@ services:
       DISPLAY: ${DISPLAY}
       QT_X11_NO_MITSHM: "1"
       UPSET_INSTALL_DIR: /opt/upset/INSTALL
+      LOCAL_UID: ${LOCAL_UID:-1000}
+      LOCAL_GID: ${LOCAL_GID:-1000}
+      HOME: /workspace
 
     volumes:
       - ./.upset:/opt/upset

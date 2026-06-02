@@ -9,11 +9,11 @@ build:
 
 run: fetch
 	xhost +local:docker
-	$(DOCKER_COMPOSE) run --rm upset /bin/bash
+	LOCAL_UID=$$(id -u) LOCAL_GID=$$(id -g) $(DOCKER_COMPOSE) run --rm upset /bin/bash
 
 gui: fetch
 	xhost +local:docker
-	$(DOCKER_COMPOSE) run --rm upset UPSET
+	LOCAL_UID=$$(id -u) LOCAL_GID=$$(id -g) $(DOCKER_COMPOSE) run --rm upset UPSET
 
 down:
 	$(DOCKER_COMPOSE) down --remove-orphans || true
@@ -23,4 +23,3 @@ clean: down
 
 distclean: down
 	rm -rf .upset workspace/reports/*
-	-docker image rm upset-runtime:ubuntu20.04
