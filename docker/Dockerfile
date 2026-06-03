@@ -15,6 +15,7 @@ RUN apt-get update -o Acquire::Retries=3 && \
         wget \
         unzip \
         nano \
+        graphviz \
         flex \
         bison \
         tcl8.6 \

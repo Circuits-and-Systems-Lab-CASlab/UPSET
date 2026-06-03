@@ -9,6 +9,7 @@ workspace/runs/
 workspace/reports/
 workspace/plots/
 workspace/experiments/
+workspace/netlist_graphs/
 
 # Docker / local env
 .env
