@@ -80,7 +80,6 @@ puts "Using ECO experiment script: $ECO_SCRIPT"
 # Library files
 # --------------------------------------------------------------------
 
-# Same typical SG13G2 corner used in the professor's original script.
 set LIB_FILE "$BASE_DIR/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
 
 set LEF_FILES [list \
@@ -146,7 +145,6 @@ if {$CK ne "None"} {
 
     create_clock -name $CK -period $PERIOD -waveform [list 0 [expr {$PERIOD / 2.0}]]
 
-    # Same simple default constraints as the professor's original script.
     set_input_delay 0 -clock $CK [all_inputs]
     set_output_delay $PERIOD -clock $CK [all_outputs]
 } else {
@@ -158,11 +156,7 @@ if {$CK ne "None"} {
 # --------------------------------------------------------------------
 
 # UPSET ECO commands, especially eco_charge_sharing, expect timing/internal RAT
-# queues to have been initialised. The professor/example flow runs report_timing
-# before sourcing ECO mitigation scripts; applying charge-sharing before this
-# initial STA can trigger "ERROR: This Feature is Disabled" followed by a crash
-# in insert_RAT_incremental_queue_element_longest(). Keep this pre-ECO STA as an
-# initialisation pass, then run/report STA again after the ECO.
+# queues to have been initialised.
 puts "Performing initial Static Timing Analysis (STA) before ECO"
 log_output_to_file "$REPORT_DIR/pre_eco_timing.log"
 report_timing
@@ -192,7 +186,18 @@ report_timing
 close_log_output_file
 
 # --------------------------------------------------------------------
-# STEP 5: Static Probability Annotation
+# STEP 5: Post-ECO Area Report
+# --------------------------------------------------------------------
+
+# Capture area after ECO so each experiment directory contains timing, area,
+# and SET metrics for the same mitigated design.
+puts "Reporting post-ECO area"
+log_output_to_file "$REPORT_DIR/area.log"
+report_area
+close_log_output_file
+
+# --------------------------------------------------------------------
+# STEP 6: Static Probability Annotation
 # --------------------------------------------------------------------
 
 # A default 50% probability is assigned to all circuit nodes.
@@ -204,10 +209,9 @@ list_static_probabilities -significant_digits 4
 close_log_output_file
 
 # --------------------------------------------------------------------
-# STEP 6: Create Particle Profiles
+# STEP 7: Create Particle Profiles
 # --------------------------------------------------------------------
 
-# Same particle profiles used in the professor's original script.
 puts "Creating particle profiles"
 create_particle_profile -name p1 -tdelay 0  -tau1 10p -tau2 100p -q 34f
 create_particle_profile -name p2 -tdelay 1p -tau1 10p -tau2 100p -q 66f
@@ -215,7 +219,7 @@ create_particle_profile -name p3 -tdelay 1p -tau1 10p -tau2 100p -q 99f
 create_particle_profile -name p4 -tdelay 1p -tau1 10p -tau2 100p -q 132f
 
 # --------------------------------------------------------------------
-# STEP 7: Single Event Transient Analysis
+# STEP 8: Single Event Transient Analysis
 # --------------------------------------------------------------------
 
 puts "Configuring SET Analysis"
@@ -223,7 +227,6 @@ puts "Configuring SET Analysis"
 # 0: Vanilla STA mode
 # 1: Detailed TimeStamp-based STA mode
 # 2: Bounded TimeStamp-based STA mode
-# Detailed TimeStamp-based STA mode matches the professor's original script.
 set_SET_glitch_propagation_mode 1
 
 # Use Double Exponential model for SET Generation.

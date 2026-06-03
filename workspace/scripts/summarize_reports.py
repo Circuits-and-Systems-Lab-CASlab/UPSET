@@ -20,6 +20,11 @@ METRIC_PATTERNS = {
     "avg_latched_aset_per_terminal_node": re.compile(r"Avg Latched ASET per Terminal Node:\s*([-+0-9.eE]+)"),
 }
 
+AREA_PATTERNS = [
+    re.compile(r"(?:top-level\s+module|module|design|total|cell|instance)\s+area\s*[:=]?\s*([-+0-9.eE]+)", re.IGNORECASE),
+    re.compile(r"^\s*area\s*[:=]?\s*([-+0-9.eE]+)\s*(?:um\^2|u?m2)?\s*$", re.IGNORECASE | re.MULTILINE),
+]
+
 FLOAT_FIELDS = [
     "total_aset",
     "total_latched_aset",
@@ -27,6 +32,7 @@ FLOAT_FIELDS = [
     "avg_apw_per_terminal_node",
     "avg_aset_per_terminal_node",
     "avg_latched_aset_per_terminal_node",
+    "area",
 ]
 
 INT_FIELDS = ["endpoints", "affected_endpoints"]
@@ -41,6 +47,7 @@ FIELDNAMES = [
     "delta_aset_pct",
     "delta_latched_aset_pct",
     "delta_apw_pct",
+    "delta_area_pct",
 ]
 
 
@@ -82,6 +89,23 @@ def parse_metadata(report_dir: Path) -> Dict[str, str]:
     return metadata
 
 
+def parse_area(report_dir: Path) -> str:
+    area_path = report_dir / "area.log"
+    if not area_path.exists():
+        return ""
+
+    text = area_path.read_text(errors="replace")
+    for pattern in AREA_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            return match.group(1)
+
+    # Fallback for tabular report_area formats: use the last standalone numeric
+    # token from the report rather than failing the whole summary.
+    numbers = re.findall(r"[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", text)
+    return numbers[-1] if numbers else ""
+
+
 def parse_log(report_dir: Path) -> Dict[str, str]:
     log_path = report_dir / "set_gatepins.log"
     row: Dict[str, str] = {
@@ -110,6 +134,8 @@ def parse_log(report_dir: Path) -> Dict[str, str]:
         else:
             row[field] = ""
             row["status"] = "missing_metrics"
+
+    row["area"] = parse_area(report_dir)
 
     return row
 
@@ -150,11 +176,13 @@ def add_deltas(rows: list[Dict[str, str]], baseline_name: str) -> None:
     base_aset = row_float(baseline, "total_aset") if baseline else None
     base_laset = row_float(baseline, "total_latched_aset") if baseline else None
     base_apw = row_float(baseline, "total_apw") if baseline else None
+    base_area = row_float(baseline, "area") if baseline else None
 
     for row in rows:
         row["delta_aset_pct"] = pct_delta(row_float(row, "total_aset"), base_aset)
         row["delta_latched_aset_pct"] = pct_delta(row_float(row, "total_latched_aset"), base_laset)
         row["delta_apw_pct"] = pct_delta(row_float(row, "total_apw"), base_apw)
+        row["delta_area_pct"] = pct_delta(row_float(row, "area"), base_area)
 
 
 def write_summary(rows: list[Dict[str, str]], out_path: Path) -> None:
@@ -184,8 +212,10 @@ def main() -> None:
             f"ASET={row.get('total_aset', '')} "
             f"LASET={row.get('total_latched_aset', '')} "
             f"APW={row.get('total_apw', '')} "
+            f"AREA={row.get('area', '')} "
             f"ΔASET%={row.get('delta_aset_pct', '')} "
-            f"ΔAPW%={row.get('delta_apw_pct', '')}"
+            f"ΔAPW%={row.get('delta_apw_pct', '')} "
+            f"ΔAREA%={row.get('delta_area_pct', '')}"
         )
 
 

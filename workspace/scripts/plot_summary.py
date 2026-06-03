@@ -47,6 +47,22 @@ def plot_metric(
 
     bars = ax.bar(x, values)
 
+    # Print each metric value above its bar so exported plots can be read
+    # without cross-checking summary.csv.
+    for bar, value in zip(bars, values):
+        if pd.isna(value):
+            continue
+        ax.annotate(
+            f"{value:.4g}",
+            xy=(bar.get_x() + bar.get_width() / 2, bar.get_height()),
+            xytext=(0, 3),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            rotation=90,
+            fontsize=8,
+        )
+
     # Mark failed / non-ok runs visually.
     for bar, status in zip(bars, plot_df["status"]):
         if status != "ok":
@@ -72,6 +88,13 @@ def plot_metric(
     ax.set_xticklabels(plot_df["run_name"], rotation=45, ha="right")
 
     ax.grid(axis="y", linestyle="--", alpha=0.35)
+
+    # Leave headroom for value labels above the tallest positive bar.
+    finite_values = pd.to_numeric(values, errors="coerce").dropna()
+    if not finite_values.empty:
+        max_value = finite_values.max()
+        if max_value > 0:
+            ax.set_ylim(top=max_value * 1.18)
 
     fig.tight_layout()
 

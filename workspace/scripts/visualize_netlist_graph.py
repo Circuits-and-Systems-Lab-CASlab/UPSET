@@ -297,6 +297,38 @@ def select_cone(
     return walk(selected, reverse_adj, levels_back) | walk(selected, forward_adj, levels_forward)
 
 
+def compute_gate_levels(design: Design) -> dict[str, int]:
+    """Return topological logic depth for each gate, starting at 0 near inputs."""
+    predecessors: dict[str, set[str]] = {gate: set() for gate in design.instances}
+    successors: dict[str, set[str]] = {gate: set() for gate in design.instances}
+    for src_gate, _src_pin, dst_gate, _dst_pin, _net in design.edges:
+        successors.setdefault(src_gate, set()).add(dst_gate)
+        predecessors.setdefault(dst_gate, set()).add(src_gate)
+
+    levels = {gate: 0 for gate in design.instances}
+    indegree = {gate: len(predecessors.get(gate, set())) for gate in design.instances}
+    queue = deque(sorted((gate for gate, degree in indegree.items() if degree == 0), key=natural_key))
+    visited: set[str] = set()
+
+    while queue:
+        gate = queue.popleft()
+        visited.add(gate)
+        for successor in sorted(successors.get(gate, set()), key=natural_key):
+            levels[successor] = max(levels[successor], levels[gate] + 1)
+            indegree[successor] -= 1
+            if indegree[successor] == 0:
+                queue.append(successor)
+
+    if len(visited) != len(design.instances):
+        # Unexpected cycles should not make visualization fail. Keep already
+        # resolved levels and conservatively place cyclic/unresolved gates after
+        # their known predecessors when possible.
+        for gate in sorted((set(design.instances) - visited), key=natural_key):
+            pred_levels = [levels[pred] for pred in predecessors.get(gate, set()) if pred in levels]
+            levels[gate] = (max(pred_levels) + 1) if pred_levels else 0
+    return levels
+
+
 def escape_label(value: object) -> str:
     return str(value).replace("\\", "\\\\").replace('"', r'\"').replace("\n", r"\n")
 
@@ -364,6 +396,7 @@ def build_dot(
     edge_labels: str = "xlabel",
     nodesep: float = 0.55,
     ranksep: float = 1.0,
+    levelize: bool = True,
 ) -> str:
     metrics = metrics or Metrics.empty()
     focus_gate_list = split_names(focus_gates)
@@ -399,6 +432,15 @@ def build_dot(
         lines.append(
             f'  "{escape_label(gate)}" [label="{escape_label(label)}", fillcolor="{fill}", color="{border}", penwidth={penwidth}];'
         )
+
+    if levelize:
+        gate_levels = compute_gate_levels(design)
+        selected_by_level: dict[int, list[str]] = {}
+        for gate in selected:
+            selected_by_level.setdefault(gate_levels.get(gate, 0), []).append(gate)
+        for _level, gates in sorted(selected_by_level.items()):
+            ranked_gates = "; ".join(f'"{escape_label(gate)}"' for gate in sorted(gates, key=natural_key))
+            lines.append(f"  {{ rank=same; {ranked_gates}; }}")
 
     if show_ports:
         nets_to_show = set()
@@ -549,6 +591,22 @@ def parse_args(argv: list[str] | None = None):
     parser.add_argument("--edge-labels", choices=["xlabel", "label", "none"], default="xlabel", help="How to draw net/pin names on edges. xlabel works better with --splines ortho.")
     parser.add_argument("--nodesep", type=float, default=0.55, help="Horizontal spacing between nodes in the same rank.")
     parser.add_argument("--ranksep", type=float, default=1.0, help="Spacing between ranks/logic levels.")
+    levelize_group = parser.add_mutually_exclusive_group()
+    levelize_group.add_argument(
+        "--levelize",
+        dest="levelize",
+        action="store_true",
+        help="Force gates at the same computed logic depth into the same Graphviz rank.",
+    )
+
+    levelize_group.add_argument(
+        "--no-levelize",
+        dest="levelize",
+        action="store_false",
+        help="Let Graphviz place gates freely instead of forcing logic-depth ranks.",
+    )
+
+    parser.set_defaults(levelize=True)
     parser.add_argument("--format", choices=["svg", "png", "pdf"], default="svg", help="Rendered output format.")
     parser.add_argument("--out", default=None, help="Rendered image path. Default: workspace/netlist_graphs/<top>_<scope>.<format>.")
     parser.add_argument("--dot-out", default=None, help="DOT output path. Default: same as --out with .dot suffix.")
@@ -605,6 +663,7 @@ def main(argv: list[str] | None = None) -> int:
         edge_labels=args.edge_labels,
         nodesep=args.nodesep,
         ranksep=args.ranksep,
+        levelize=args.levelize,
     )
     dot_path.write_text(dot, encoding="utf-8")
     print(f"Wrote DOT: {dot_path}")
