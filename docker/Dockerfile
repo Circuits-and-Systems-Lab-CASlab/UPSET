@@ -41,8 +41,18 @@ RUN apt-get update -o Acquire::Retries=3 && \
         libxi6 \
         libxft2 \
         libfreetype6 \
-        libfontconfig1 && \
+        libfontconfig1 \
+        python3 \
+        python3-pip && \
+    python3 -m pip install --no-cache-dir \
+        'numpy==1.24.4' \
+        'pandas==2.0.3' \
+        'matplotlib==3.7.5' && \
     rm -rf /var/lib/apt/lists/*
+
+# Force matplotlib to use a non-interactive backend so plot generation works in
+# headless/no-GUI container runs.
+ENV MPLBACKEND=Agg
 
 COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh

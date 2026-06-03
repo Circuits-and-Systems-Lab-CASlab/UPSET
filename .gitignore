@@ -6,8 +6,15 @@ UPSET.zip
 # Runtime outputs
 workspace/outputs/
 workspace/runs/
+workspace/reports/
+workspace/plots/
+workspace/experiments/
 
 # Docker / local env
 .env
+
+__pycache__/
+.config/
+.cache/
 
 workspace/UPSET

@@ -1,4 +1,10 @@
-# This script performs a SET Analysis using the IHP SG13G2 OpenPDK standard cell library
+# This script performs a SET Analysis using the IHP SG13G2 OpenPDK standard cell library.
+#
+# Experiment workflow:
+#   - Select an ECO experiment through ECO_SCRIPT.
+#   - Use an empty/no-op ECO script for the baseline run.
+#   - This script applies ECO_SCRIPT before STA/SET reporting, so every report
+#     written under REPORT_PATH corresponds to the selected experiment.
 
 # --------------------------------------------------------------------
 # Helper procedures
@@ -67,10 +73,14 @@ if {$CK eq "None"} {
     }
 }
 
+set ECO_SCRIPT [optional_env ECO_SCRIPT "/workspace/experiments/000_baseline.tcl"]
+puts "Using ECO experiment script: $ECO_SCRIPT"
+
 # --------------------------------------------------------------------
 # Library files
 # --------------------------------------------------------------------
 
+# Same typical SG13G2 corner used in the professor's original script.
 set LIB_FILE "$BASE_DIR/libs.ref/sg13g2_stdcell/lib/sg13g2_stdcell_typ_1p20V_25C.lib"
 
 set LEF_FILES [list \
@@ -86,12 +96,24 @@ require_dir $BASE_DIR "IHP SG13G2 library root"
 require_file $LIB_FILE "Liberty timing library"
 require_file $DUT "Design Verilog file"
 require_file $DEF_FILE "Design DEF file"
+require_file $ECO_SCRIPT "ECO experiment script"
 
 foreach lef_file $LEF_FILES {
     require_file $lef_file "LEF file"
 }
 
 file mkdir $REPORT_DIR
+
+# Record reproducibility metadata for the run.
+set metadata_file [open "$REPORT_DIR/experiment_metadata.txt" "w"]
+puts $metadata_file "REPORT_PATH=$REPORT_DIR"
+puts $metadata_file "ECO_SCRIPT=$ECO_SCRIPT"
+puts $metadata_file "LIB=$BASE_DIR"
+puts $metadata_file "DESIGN=$DUT"
+puts $metadata_file "DESIGN_DEF=$DEF_FILE"
+puts $metadata_file "CLK=$CK"
+puts $metadata_file "CLK_PERIOD=$PERIOD"
+close $metadata_file
 
 # --------------------------------------------------------------------
 # STEP 1: Load library files and design
@@ -116,7 +138,7 @@ puts "Loading DEF file..."
 load_def $DEF_FILE
 
 # --------------------------------------------------------------------
-# STEP 2: Set up clock and timing constraints
+# STEP 2: Set up the clock and timing constraints
 # --------------------------------------------------------------------
 
 if {$CK ne "None"} {
@@ -124,28 +146,56 @@ if {$CK ne "None"} {
 
     create_clock -name $CK -period $PERIOD -waveform [list 0 [expr {$PERIOD / 2.0}]]
 
-    # Simple default constraints.
-    # If the design has a clock port in all_inputs, this may also apply input delay to it.
-    # For more accurate timing, refine these constraints per design.
+    # Same simple default constraints as the professor's original script.
     set_input_delay 0 -clock $CK [all_inputs]
     set_output_delay $PERIOD -clock $CK [all_outputs]
 } else {
-    puts "Skipping clock creation."
+    puts "No clock signal specified, skipping clock creation."
 }
 
 # --------------------------------------------------------------------
-# STEP 3: Perform STA
+# STEP 3: Initial STA / graph levelisation
 # --------------------------------------------------------------------
 
-puts "Performing Static Timing Analysis (STA)"
+# UPSET ECO commands, especially eco_charge_sharing, expect timing/internal RAT
+# queues to have been initialised. The professor/example flow runs report_timing
+# before sourcing ECO mitigation scripts; applying charge-sharing before this
+# initial STA can trigger "ERROR: This Feature is Disabled" followed by a crash
+# in insert_RAT_incremental_queue_element_longest(). Keep this pre-ECO STA as an
+# initialisation pass, then run/report STA again after the ECO.
+puts "Performing initial Static Timing Analysis (STA) before ECO"
+log_output_to_file "$REPORT_DIR/pre_eco_timing.log"
+report_timing
+close_log_output_file
+
+# --------------------------------------------------------------------
+# STEP 4: Optional ECO SET mitigation techniques
+# --------------------------------------------------------------------
+
+# ECOs are applied here, after the initial STA initialisation but before SET
+# analysis and before this script writes the final compared SET reports. For the
+# baseline, use the empty /workspace/experiments/000_baseline.tcl script.
+puts "Applying ECO experiment after initial STA: $ECO_SCRIPT"
+log_output_to_file "$REPORT_DIR/eco.log"
+source $ECO_SCRIPT
+close_log_output_file
+
+# --------------------------------------------------------------------
+# STEP 5: Post-ECO STA
+# --------------------------------------------------------------------
+
+# Re-run STA after ECO so timing.log reflects the design that will be analysed
+# by the SET flow.
+puts "Performing post-ECO Static Timing Analysis (STA)"
 log_output_to_file "$REPORT_DIR/timing.log"
 report_timing
 close_log_output_file
 
 # --------------------------------------------------------------------
-# STEP 4: Static Probability Annotation
+# STEP 5: Static Probability Annotation
 # --------------------------------------------------------------------
 
+# A default 50% probability is assigned to all circuit nodes.
 puts "Performing Static Probability Annotation"
 set_static_probability -value 0.5 -all
 
@@ -154,18 +204,18 @@ list_static_probabilities -significant_digits 4
 close_log_output_file
 
 # --------------------------------------------------------------------
-# STEP 5: Create Particle Profiles
+# STEP 6: Create Particle Profiles
 # --------------------------------------------------------------------
 
+# Same particle profiles used in the professor's original script.
 puts "Creating particle profiles"
-
 create_particle_profile -name p1 -tdelay 0  -tau1 10p -tau2 100p -q 34f
 create_particle_profile -name p2 -tdelay 1p -tau1 10p -tau2 100p -q 66f
 create_particle_profile -name p3 -tdelay 1p -tau1 10p -tau2 100p -q 99f
 create_particle_profile -name p4 -tdelay 1p -tau1 10p -tau2 100p -q 132f
 
 # --------------------------------------------------------------------
-# STEP 6: Single Event Transient Analysis
+# STEP 7: Single Event Transient Analysis
 # --------------------------------------------------------------------
 
 puts "Configuring SET Analysis"
@@ -173,9 +223,10 @@ puts "Configuring SET Analysis"
 # 0: Vanilla STA mode
 # 1: Detailed TimeStamp-based STA mode
 # 2: Bounded TimeStamp-based STA mode
+# Detailed TimeStamp-based STA mode matches the professor's original script.
 set_SET_glitch_propagation_mode 1
 
-# Use Double Exponential model for SET Generation
+# Use Double Exponential model for SET Generation.
 set_SET_generation_parameters -model DEXP
 
 puts "Performing Exhaustive SET Analysis"
@@ -190,25 +241,6 @@ close_log_output_file
 
 puts "Dumping all gate pins SET analysis information to CSV"
 dump_all_gatepins_SET_analysis_info_to_csv "$REPORT_DIR/set_gatepins.csv"
-
-# --------------------------------------------------------------------
-# STEP 7: Optional ECO SET Mitigation Techniques
-# --------------------------------------------------------------------
-
-# ECO_SCRIPT can be overridden from the environment.
-# Default path follows the current project layout:
-# /workspace/scripts/eco_set_mitigations.tcl
-
-set ECO_SCRIPT [optional_env ECO_SCRIPT "/workspace/scripts/eco_set_mitigations.tcl"]
-
-if {[file exists $ECO_SCRIPT]} {
-    puts "Sourcing ECO mitigation script: $ECO_SCRIPT"
-    source $ECO_SCRIPT
-} else {
-    puts "WARNING: ECO mitigation script not found:"
-    puts "         $ECO_SCRIPT"
-    puts "Skipping ECO mitigation step."
-}
 
 puts "SET analysis script completed."
 
