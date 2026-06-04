@@ -69,7 +69,8 @@ def plot_metric(
             bar.set_alpha(0.45)
             bar.set_hatch("//")
 
-    # Baseline horizontal line if available.
+    # Baseline horizontal line if available. Keep it unlabeled so it does not
+    # create a legend box over the plot.
     baseline_rows = plot_df[plot_df["run_name"] == baseline_name]
     if not baseline_rows.empty:
         baseline_value = baseline_rows.iloc[0][metric]
@@ -77,12 +78,10 @@ def plot_metric(
             baseline_value,
             linestyle="--",
             linewidth=1,
-            label=f"{baseline_name}: {baseline_value:.4g}",
         )
-        ax.legend()
 
     ax.set_title(metric)
-    ax.set_xlabel("Run")
+    # ax.set_xlabel("Run")
     ax.set_ylabel(metric)
     ax.set_xticks(list(x))
     ax.set_xticklabels(plot_df["run_name"], rotation=45, ha="right")

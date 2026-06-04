@@ -22,7 +22,8 @@ Usage:
 If <experiment_name> and <eco_script> are omitted, the script prompts with
 numbered options from:
   $EXPERIMENTS_DIR
-The prompt also offers an "all" option to run every *.tcl experiment script.
+The prompt also offers an "all" option to run every *.tcl experiment script,
+or a numeric range such as "17-25" to run only that inclusive slice.
 
 Experiment selection:
   --all
@@ -91,12 +92,24 @@ prompt_for_experiment() {
     printf '  %2d) %s\n' "$((i + 1))" "$(basename "${EXPERIMENT_FILES[$i]}" .tcl)"
   done
 
-  local choice
+  local choice start end i
   while true; do
-    read -r -p "Choice [0-${#EXPERIMENT_FILES[@]}]: " choice
+    read -r -p "Choice [0-${#EXPERIMENT_FILES[@]}] or range (e.g. 17-25): " choice
+    choice="${choice//[[:space:]]/}"
     if [[ "$choice" == "0" ]]; then
       RUN_ALL="1"
       break
+    fi
+    if [[ "$choice" =~ ^([0-9]+)-([0-9]+)$ ]]; then
+      start="${BASH_REMATCH[1]}"
+      end="${BASH_REMATCH[2]}"
+      if (( start >= 1 && end >= start && end <= ${#EXPERIMENT_FILES[@]} )); then
+        SELECTED_EXPERIMENT_FILES=()
+        for ((i = start; i <= end; i++)); do
+          SELECTED_EXPERIMENT_FILES+=("${EXPERIMENT_FILES[$((i - 1))]}")
+        done
+        break
+      fi
     fi
     if [[ "$choice" =~ ^[0-9]+$ ]] && (( choice >= 1 && choice <= ${#EXPERIMENT_FILES[@]} )); then
       ECO_SCRIPT="${EXPERIMENT_FILES[$((choice - 1))]}"
@@ -158,6 +171,7 @@ RUN_SORT_ASET="1"
 RUN_SUMMARY="1"
 RUN_SUMMARY_PLOTS="1"
 SUMMARY_PLOTS_DIR="${SUMMARY_PLOTS_DIR:-$REPORTS_ROOT/plots}"
+SELECTED_EXPERIMENT_FILES=()
 POSITIONAL=()
 
 while [[ $# -gt 0 ]]; do
@@ -408,16 +422,24 @@ EOF
   echo "==> Done: $experiment_name"
 }
 
-if [[ "$RUN_ALL" == "1" ]]; then
+if [[ "$RUN_ALL" == "1" || ${#SELECTED_EXPERIMENT_FILES[@]} -gt 0 ]]; then
   if [[ -n "${EXPERIMENT_REPORT_PATH:-}" ]]; then
-    echo "ERROR: EXPERIMENT_REPORT_PATH cannot be used with --all because every experiment needs its own report directory." >&2
+    echo "ERROR: EXPERIMENT_REPORT_PATH cannot be used with multi-experiment runs because every experiment needs its own report directory." >&2
     exit 2
   fi
 
-  list_experiments
+  if [[ "$RUN_ALL" == "1" ]]; then
+    list_experiments
+    SELECTED_EXPERIMENT_FILES=("${EXPERIMENT_FILES[@]}")
+  fi
+
   FAILED_EXPERIMENTS=()
-  echo "==> Running all ${#EXPERIMENT_FILES[@]} experiment(s) from: $EXPERIMENTS_DIR"
-  for eco_script in "${EXPERIMENT_FILES[@]}"; do
+  if [[ "$RUN_ALL" == "1" ]]; then
+    echo "==> Running all ${#SELECTED_EXPERIMENT_FILES[@]} experiment(s) from: $EXPERIMENTS_DIR"
+  else
+    echo "==> Running selected range of ${#SELECTED_EXPERIMENT_FILES[@]} experiment(s) from: $EXPERIMENTS_DIR"
+  fi
+  for eco_script in "${SELECTED_EXPERIMENT_FILES[@]}"; do
     experiment_name="$(basename "$eco_script" .tcl)"
     set +e
     run_one_experiment "$experiment_name" "$eco_script"
@@ -425,7 +447,7 @@ if [[ "$RUN_ALL" == "1" ]]; then
     set -e
 
     if [[ "$experiment_status" != "0" ]]; then
-      echo "WARNING: experiment failed and --all will continue: $experiment_name (status=$experiment_status)" >&2
+      echo "WARNING: experiment failed and multi-experiment run will continue: $experiment_name (status=$experiment_status)" >&2
       FAILED_EXPERIMENTS+=("$experiment_name:$experiment_status")
     fi
   done
@@ -456,8 +478,12 @@ if [[ "$RUN_SUMMARY_PLOTS" == "1" ]]; then
   fi
 fi
 
-if [[ "$RUN_ALL" == "1" ]]; then
-  echo "==> Done: all experiments"
+if [[ "$RUN_ALL" == "1" || ${#SELECTED_EXPERIMENT_FILES[@]} -gt 0 ]]; then
+  if [[ "$RUN_ALL" == "1" ]]; then
+    echo "==> Done: all experiments"
+  else
+    echo "==> Done: selected range"
+  fi
   if [[ ${#FAILED_EXPERIMENTS[@]} -gt 0 ]]; then
     echo "WARNING: ${#FAILED_EXPERIMENTS[@]} experiment(s) failed:" >&2
     printf '  %s\n' "${FAILED_EXPERIMENTS[@]}" >&2
