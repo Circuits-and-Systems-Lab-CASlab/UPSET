@@ -1,0 +1,64 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV QT_X11_NO_MITSHM=1
+ENV UPSET_INSTALL_DIR=/opt/upset/INSTALL
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN apt-get update -o Acquire::Retries=3 && \
+    apt-get install -y --no-install-recommends \
+        gosu \
+        build-essential \
+        ca-certificates \
+        curl \
+        wget \
+        unzip \
+        nano \
+        graphviz \
+        flex \
+        bison \
+        tcl8.6 \
+        tcl8.6-dev \
+        tk-dev \
+        libgtk2.0-0 \
+        libgtk2.0-dev \
+        libgsl-dev \
+        libsuitesparse-dev \
+        libfftw3-dev \
+        libreadline-dev \
+        libncursesw5-dev \
+        libssl-dev \
+        libsqlite3-dev \
+        libgdbm-dev \
+        libc6-dev \
+        libbz2-dev \
+        libffi-dev \
+        zlib1g-dev \
+        libx11-6 \
+        libxext6 \
+        libxrender1 \
+        libxtst6 \
+        libxi6 \
+        libxft2 \
+        libfreetype6 \
+        libfontconfig1 \
+        python3 \
+        python3-pip && \
+    python3 -m pip install --no-cache-dir \
+        'numpy==1.24.4' \
+        'pandas==2.0.3' \
+        'matplotlib==3.7.5' && \
+    rm -rf /var/lib/apt/lists/*
+
+# Force matplotlib to use a non-interactive backend so plot generation works in
+# headless/no-GUI container runs.
+ENV MPLBACKEND=Agg
+
+COPY docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+WORKDIR /workspace
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["/bin/bash"]

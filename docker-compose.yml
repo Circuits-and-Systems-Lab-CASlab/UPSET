@@ -1,0 +1,28 @@
+services:
+  upset:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+
+    image: upset-runtime:ubuntu20.04
+    container_name: upset
+
+    network_mode: host
+
+    environment:
+      DISPLAY: ${DISPLAY}
+      QT_X11_NO_MITSHM: "1"
+      UPSET_INSTALL_DIR: /opt/upset/INSTALL
+      LOCAL_UID: ${LOCAL_UID:-1000}
+      LOCAL_GID: ${LOCAL_GID:-1000}
+      HOME: /workspace
+
+    volumes:
+      - ./.upset:/opt/upset
+      - ./workspace:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
+    working_dir: /workspace
+
+    stdin_open: true
+    tty: true

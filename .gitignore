@@ -1,0 +1,21 @@
+# Downloaded proprietary/binary release
+.upset/
+vendor/upset/
+UPSET.zip
+
+# Runtime outputs
+workspace/outputs/
+workspace/runs/
+workspace/reports/
+workspace/plots/
+workspace/experiments/
+workspace/netlist_graphs/
+
+# Docker / local env
+.env
+
+__pycache__/
+.config/
+.cache/
+
+workspace/UPSET
